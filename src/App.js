@@ -1,16 +1,25 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { Grommet } from 'grommet';
 import withLayout from './components/withLayout';
 import Home from './pages/Home';
 import './styles/app.module.css';
 
-function App() {
+const App = () => {
+  const theme = {
+    global: {
+      font: {
+        size: '62.5%',
+      }
+    }
+  }
+
   return (
-    <div className="App">
+    <Grommet theme={theme}>
       <Switch>
         <Route exact path='/' component={Home} />
       </Switch>
-    </div>
+    </Grommet>
   );
 }
 
