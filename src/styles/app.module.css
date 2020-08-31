@@ -1,0 +1,12 @@
+:root {
+    --orange: #ff6347;
+}
+
+html {
+    font-size: 62.5%;
+    background-color: whitesmoke;
+}
+
+body {
+    margin: 0;
+}
