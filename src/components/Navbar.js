@@ -6,9 +6,8 @@ import Emoji from './Emoji';
 
 const StyledNav = styled(Nav)`
     display: none;
-    color: red;
-
-    @media only screen and (min-width: 760px) {
+    
+    @media only screen and (min-width: 48rem) {
         display: flex;
     }
 `;
@@ -16,7 +15,7 @@ const StyledNav = styled(Nav)`
 const StyledMenu = styled(Menu)`
     display: flex;
 
-    @media only screen and (min-width: 760px) {
+    @media only screen and (min-width: 48rem) {
         display: none;
     }
 `;
@@ -33,7 +32,7 @@ const AppBar = (props) => (
         justify='between'
         pad={{ left: 'medium', right: 'small' }}
         elevation='medium'
-        style={{ height: '50px', zIndex: '1' }}
+        style={{ height: '3.5rem', zIndex: '1' }}
         {...props}
     />
 );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Footer, Text, Anchor } from 'grommet';
+import { Footer, Text } from 'grommet';
 import styled from 'styled-components';
 
 const StyledText = styled(Text)`
@@ -9,8 +9,8 @@ const StyledText = styled(Text)`
 
 const CustomFooter = () => {
     return (
-        <Footer height='50px' margin='none' pad="xsmall" >
-            <StyledText>Copyright © 2020 Fabian Dean </StyledText>
+        <Footer height='3rem' margin='none' pad="xxsmall" >
+            <StyledText>Copyright © 2020 Fabian Dean</StyledText>
         </Footer >
     );
 };

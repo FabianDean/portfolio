@@ -1,12 +1,20 @@
 import React from 'react';
 import SummaryCard from '../components/SummaryCard';
-import styles from '../styles/home.module.css';
+import styled from 'styled-components';
+import SectionTitle from '../components/SectionTitle';
+
+const Container = styled.div`
+    padding: 1rem;
+`;
 
 const Home = () => {
     return (
-        <div className={styles.container} >
+        <Container>
             <SummaryCard />
-        </div>
+            <SectionTitle title='Projects' />
+            <SectionTitle title='Skills' />
+            <SectionTitle title='Contact' />
+        </Container>
     );
 };
 
