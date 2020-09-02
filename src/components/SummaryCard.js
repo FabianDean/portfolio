@@ -18,6 +18,7 @@ const Card = styled.div`
     box-shadow: 0 5px 20px grey;
     margin: 0 auto;
     overflow: hidden;
+    width: fit-content;
 
     @media only screen and (min-width: 24rem) {
         flex-direction: column;
@@ -30,11 +31,9 @@ const Header = styled.div`
     justify-content: space-between;
     padding: 0 1rem;
     border-bottom: 1px solid grey;
-    width: 100%;
 
-    @media only screen and (min-width: 24rem) {
+    @media only screen and (min-width: 48rem) {
         font-size: 1rem;
-        width: inherit;
     }
 `;
 
@@ -43,26 +42,21 @@ const Body = styled.div`
     flex-direction: column;
     padding: 1rem;
 
-    @media only screen and (min-width: 38rem) {
+    @media only screen and (min-width: 48rem) {
         flex-direction: row;
     }
 `;
 
 const Portrait = styled.div`
-    height: 20rem;
+    height: 40vh;
     width: 100%;
     border-radius: 10px;
     align-self: center;
     background-color: skyblue;
 
-    @media only screen and (min-width: 46rem) {
+    @media only screen and (min-width: 48rem) {
         height: 22rem;
         width: 16rem;
-    }
-    
-    @media only screen and (min-width: 38rem) {
-        height: 16rem;
-        width: 14rem;
     }
 `;
 
@@ -74,6 +68,10 @@ const FieldName = styled.span`
 const FieldContent = styled.span`
     font-size: 1.2rem;
     font-weight: bold;
+
+    @media only screen and (min-width: 38rem) {
+        font-size: 1.4rem;
+    }
 `;
 
 const IconsList = styled.div`
