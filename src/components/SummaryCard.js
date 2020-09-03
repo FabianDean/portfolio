@@ -12,11 +12,11 @@ const Container = styled.div(({ noPadding, column, justifyContent, alignItems })
 
 const Card = styled.div`
     display: block;
+    width: 100%;
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
     margin: 0 auto;
-    width: 100%;
 
     @media only screen and (min-width: 24rem) {
         flex-direction: column;
@@ -54,11 +54,12 @@ const Portrait = styled.img`
     align-self: center;
     background-color: whitesmoke;
     object-fit: cover;
-    object-position: 70% 0; 
+    object-position: 70% 60%; 
 
     @media only screen and (min-width: 48rem) {
         height: 22rem;
         width: 16rem;
+        object-position: 70% 0; 
     }
 `;
 
