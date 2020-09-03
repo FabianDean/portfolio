@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import './fonts/Lekton-Regular.ttf';
+import './fonts/Lekton-Bold.ttf';
+import './fonts/Lekton-Italic.ttf';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
