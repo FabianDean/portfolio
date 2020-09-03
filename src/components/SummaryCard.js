@@ -11,17 +11,16 @@ const Container = styled.div(({ noPadding, column, justifyContent, alignItems })
 `);
 
 const Card = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    background-color: whitesmoke;
+    display: block;
+    background-color: white;
     border-radius: 10px;
-    box-shadow: 0 5px 20px grey;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     margin: 0 auto;
-    overflow: hidden;
-    width: fit-content;
+    width: 100%;
 
     @media only screen and (min-width: 24rem) {
         flex-direction: column;
+        max-width: 52rem;
     }
 `;
 
@@ -47,12 +46,15 @@ const Body = styled.div`
     }
 `;
 
-const Portrait = styled.div`
+const Portrait = styled.img`
     height: 40vh;
     width: 100%;
+    max-width: 30rem;
     border-radius: 10px;
     align-self: center;
     background-color: skyblue;
+    object-fit: cover;
+    object-position: 70% 0; 
 
     @media only screen and (min-width: 48rem) {
         height: 22rem;
@@ -131,7 +133,7 @@ const SummaryCard = () => {
             </Header>
             <Body>
                 <Container noPadding column>
-                    <Portrait />
+                    <Portrait src='portrait.jpg' />
                 </Container>
                 <Container justifyContent='space-around'>
                     {fieldNameSection}
@@ -139,11 +141,11 @@ const SummaryCard = () => {
                     <Spacer />
                 </Container>
                 <Spacer />
-                <Container noPadding justifyContent='center'>
+                <Container justifyContent='center'>
                     {socialsSection}
                 </Container>
             </Body>
-        </Card >
+        </Card>
     );
 };
 
