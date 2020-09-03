@@ -25,6 +25,12 @@ const Title = styled(Button)`
     font-weight: bold;
 `;
 
+const StyledAnchor = styled(Anchor)`
+    :focus {
+        box-shadow: none !important;
+    }
+`;
+
 const AppBar = (props) => (
     <Box
         style={{ position: 'sticky', height: '3.5rem' }}
@@ -49,9 +55,9 @@ const Navbar = () => {
         <AppBar>
             <Title label={title} plain hoverIndicator />
             <StyledNav direction='row' >
-                <Anchor label='Projects' href='#projects' color='black' hoverIndicator focusIndicator={false} />
-                <Anchor label='Skills' href='#skills' color='black' hoverIndicator focusIndicator={false} />
-                <Anchor label='Contact' href='#contact' color='black' hoverIndicator focusIndicator={false} />
+                <StyledAnchor label='Projects' href='#projects' color='black' hoverIndicator />
+                <StyledAnchor label='Skills' href='#skills' color='black' hoverIndicator />
+                <StyledAnchor label='Contact' href='#contact' color='black' hoverIndicator />
             </StyledNav>
             <StyledMenu
                 label={<Apps />}

@@ -52,7 +52,7 @@ const Portrait = styled.img`
     max-width: 30rem;
     border-radius: 10px;
     align-self: center;
-    background-color: skyblue;
+    background-color: whitesmoke;
     object-fit: cover;
     object-position: 70% 0; 
 

@@ -15,11 +15,11 @@ const App = () => {
   };
 
   return (
-    <Grommet theme={theme}>
+    <Grommet theme={theme} >
       <Switch>
         <Route exact path='/' component={Home} />
       </Switch>
-    </Grommet>
+    </Grommet >
   );
 }
 
