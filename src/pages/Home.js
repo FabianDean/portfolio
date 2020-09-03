@@ -8,10 +8,23 @@ const Container = styled.div`
     padding: 1rem;
 `;
 
+const CardSection = styled.div`
+    border: none;
+
+    @media only screen and (min-width: 48rem) {
+        background-color: transparent;
+        border: 10px dashed grey;
+        border-radius: 10px;
+        padding: 2rem 1rem;    
+    }
+`;
+
 const Home = () => {
     return (
         <Container>
-            <SummaryCard />
+            <CardSection>
+                <SummaryCard />
+            </CardSection>
             <SectionTitle title='Projects' />
             <div>
                 <ProjectCard

@@ -26,13 +26,12 @@ const Title = styled(Button)`
 
 const AppBar = (props) => (
     <Box
+        style={{ position: 'sticky', boxShadow: 'none', height: '3.5rem' }}
         tag='header'
         direction='row'
         align='center'
         justify='between'
         pad={{ left: 'medium', right: 'small' }}
-        elevation='medium'
-        style={{ height: '3.5rem', zIndex: '1' }}
         {...props}
     />
 );
