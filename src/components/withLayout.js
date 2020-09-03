@@ -5,6 +5,7 @@ import CustomFooter from './CustomFooter';
 
 const StyledDiv = styled.div`
     margin: 0 auto;
+    width: 100%;
 
     @media only screen and (min-width: 64em) {
         max-width: 64rem;
