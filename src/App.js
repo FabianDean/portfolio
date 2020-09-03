@@ -10,9 +10,9 @@ const App = () => {
     global: {
       font: {
         size: '62.5%',
-      }
-    }
-  }
+      },
+    },
+  };
 
   return (
     <Grommet theme={theme}>

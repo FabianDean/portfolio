@@ -22,11 +22,12 @@ const StyledMenu = styled(Menu)`
 
 const Title = styled(Button)`
     font-size: 1.6rem;
+    font-weight: bold;
 `;
 
 const AppBar = (props) => (
     <Box
-        style={{ position: 'sticky', boxShadow: 'none', height: '3.5rem' }}
+        style={{ position: 'sticky', height: '3.5rem' }}
         tag='header'
         direction='row'
         align='center'
@@ -48,9 +49,9 @@ const Navbar = () => {
         <AppBar>
             <Title label={title} plain hoverIndicator />
             <StyledNav direction='row' >
-                <Anchor label='Projects' hoverIndicator />
-                <Anchor label='Skills' hoverIndicator />
-                <Anchor label='Contact' hoverIndicator />
+                <Anchor label='Projects' href='#projects' color='black' hoverIndicator focusIndicator={false} />
+                <Anchor label='Skills' href='#skills' color='black' hoverIndicator focusIndicator={false} />
+                <Anchor label='Contact' href='#contact' color='black' hoverIndicator focusIndicator={false} />
             </StyledNav>
             <StyledMenu
                 label={<Apps />}
