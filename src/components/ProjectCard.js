@@ -6,6 +6,7 @@ const Card = styled.div`
     padding: 1rem;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
     border-radius: 10px;
+    font-size: 1rem;
 `;
 
 const LinksSection = styled.div`
@@ -22,24 +23,20 @@ const LinksSection = styled.div`
 const StyledButton = styled(Button)`
     color: white;
     background-color: black;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 0.1rem 1rem;
-    font-size: 1rem;
-
-    @media only screen and (min-width: 48rem) {
-        
-    }
+    font-weight: bold;
 `;
 
 /**
- * @param {name} String Project name
+ * @param {name} React.Component (can also be a String) Project name
  * @param {description} String Project description
  * @param {links} array Array of Objects i.e. [ { url: String, value: String } ]
  */
 const ProjectCard = ({ name, description, links }) => {
     return (
         <Card>
-            <h1>{name}</h1>
+            <h2>{name}</h2>
             <p>{description}</p>
             <LinksSection>
                 {
