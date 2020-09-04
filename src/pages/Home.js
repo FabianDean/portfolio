@@ -88,7 +88,7 @@ const Home = () => {
             name: <span>More on GitHub <Emoji symbol='🗄️' label='filing cabinet' /></span>,
             description: 'Some other projects include the two servers used to help power features on both Easy BMI and ReciMe as well as the source code of this site you\'re on right now. Feel free to look at what I\'ve made and to see what I\'m currently working on.',
             links: [
-                { url: 'https://github.com', value: 'GitHub' },
+                { url: 'https://github.com/FabianDean', value: 'GitHub' },
             ],
         },
     };
