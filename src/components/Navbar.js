@@ -15,6 +15,10 @@ const StyledNav = styled(Nav)`
 const StyledMenu = styled(Menu)`
     display: flex;
 
+    :focus {
+        box-shadow: none !important;
+    }
+
     @media only screen and (min-width: 48rem) {
         display: none;
     }
@@ -60,13 +64,12 @@ const Navbar = () => {
                 <StyledAnchor label='Contact' href='#contact' color='black' hoverIndicator />
             </StyledNav>
             <StyledMenu
-                label={<Apps />}
-                icon={false}
-                margin='0px 5px 0px 0px'
+                dropAlign={{ right: 'right', top: 'top' }}
+                icon={<Apps />}
                 items={[
-                    { label: 'Projects' },
-                    { label: 'Skills' },
-                    { label: 'Contact' },
+                    { label: 'Projects', href: '#projects' },
+                    { label: 'Skills', href: '#skills' },
+                    { label: 'Contact', href: '#contact' },
                 ]}
             />
         </AppBar>

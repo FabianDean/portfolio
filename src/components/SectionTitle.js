@@ -6,6 +6,6 @@ const Title = styled.h2`
     margin-top: 2rem;
 `;
 
-const SectionTitle = ({ title }) => <Title>{title}</Title>;
+const SectionTitle = ({ title, id }) => <Title id={id}>{title}</Title>;
 
 export default SectionTitle;

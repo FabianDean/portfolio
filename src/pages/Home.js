@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import * as simpleIcons from '@styled-icons/simple-icons'
+import { Mail } from 'grommet-icons';
 import SummaryCard from '../components/SummaryCard';
 import ProjectCard from '../components/ProjectCard';
 import SectionTitle from '../components/SectionTitle';
@@ -43,13 +44,18 @@ const SkillsSection = styled.div`
 `;
 
 const ContactSection = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    display: flex;
+    justify-content: space-around;
 `;
 
 const skillIconStyle = {
     height: '4rem',
+    color: '#484848',
+};
+
+const contactIconStyle = {
+    height: '4rem',
+    color: 'black',
 };
 
 const Home = () => {
@@ -71,11 +77,18 @@ const Home = () => {
             ],
         },
         mediaTracker: {
-            name: <span>Media Tracker <Emoji symbol='▶️' label='play button' /></span>,
+            name: <span>Media Tracker <Emoji symbol='📽️' label='film projector' /></span>,
             description: 'An application that helps keep track of the shows and movies you watch, while also making it social! Participate in a forum for each title and see what others have to say. Your input helps others discover your favorite shows and movies by giving them the confidence to start watching.',
             links: [
                 { url: 'http://themediatracker.com', value: 'Live' },
                 { url: 'https://github.com/PentaTech-Inc/Media-Tracker', value: 'GitHub' },
+            ],
+        },
+        more: {
+            name: <span>More on GitHub <Emoji symbol='🗄️' label='filing cabinet' /></span>,
+            description: 'Some other projects include the two servers used to help power features on both Easy BMI and ReciMe as well as the source code of this site you\'re on right now. Feel free to look at what I\'ve made and to see what I\'m currently working on.',
+            links: [
+                { url: 'https://github.com', value: 'GitHub' },
             ],
         },
     };
@@ -85,8 +98,8 @@ const Home = () => {
             <CardSection>
                 <SummaryCard />
             </CardSection>
-            <SectionTitle title='Projects' />
-            <ProjectSection id='projects'>
+            <SectionTitle id='projects' title={<span><Emoji label='stars' symbol='✨' />Projects</span>} />
+            <ProjectSection>
                 {
                     Object.keys(projects).map((key) => (
                         <ProjectCard
@@ -97,8 +110,8 @@ const Home = () => {
                     ))
                 }
             </ProjectSection>
-            <SectionTitle title='Skills' />
-            <SkillsSection id='skills'>
+            <SectionTitle id='skills' title={<span><Emoji label='hammer and wrench' symbol='🛠️' />Skills</span>} />
+            <SkillsSection>
                 <simpleIcons.ReactLogo style={skillIconStyle} />
                 <simpleIcons.NodeDotJs style={skillIconStyle} />
                 <simpleIcons.Mongodb style={skillIconStyle} />
@@ -112,8 +125,12 @@ const Home = () => {
                 <simpleIcons.Googlecloud style={skillIconStyle} />
                 <simpleIcons.Amazonaws style={skillIconStyle} />
             </SkillsSection>
-            <SectionTitle title='Contact' />
-            <ContactSection id='contact'>
+            <SectionTitle id='contact' title={<span><Emoji label='telephone' symbol='☎️' />Contact</span>} />
+            <ContactSection>
+                <a href='mailto:fabian@fabiandean.dev' rel='noopener noreferrer' target='_blank' ><Mail size='4rem' color='black' /></a>
+                <a href='https://linkedin.com/in/FabianDean' rel='noopener noreferrer' target='_blank'><simpleIcons.Linkedin style={contactIconStyle} /></a>
+                <a href='https://twitter.com/FabianDean_dev' rel='noopener noreferrer' target='_blank'><simpleIcons.Twitter style={contactIconStyle} /></a>
+                <a href='https://github.com/FabianDean' rel='noopener noreferrer' target='_blank'><simpleIcons.Github style={contactIconStyle} /></a>
             </ContactSection>
         </Container >
     );

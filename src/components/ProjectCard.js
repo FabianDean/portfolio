@@ -26,6 +26,10 @@ const StyledButton = styled(Button)`
     border-radius: 5px;
     padding: 0.1rem 1rem;
     font-weight: bold;
+    
+    :focus {
+        box-shadow: none !important;
+    }
 `;
 
 /**
@@ -44,6 +48,7 @@ const ProjectCard = ({ name, description, links }) => {
                         return (
                             <StyledButton
                                 href={item.url}
+                                rel='noopener noreferrer'
                                 target='_blank'
                             >
                                 {item.value}

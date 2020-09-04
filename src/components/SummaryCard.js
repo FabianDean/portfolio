@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linkedin, Github, Twitter } from 'grommet-icons';
+import * as simpleIcons from '@styled-icons/simple-icons';
 import styled from 'styled-components';
 
 const Container = styled.div(({ noPadding, column, justifyContent, alignItems }) => `
@@ -78,12 +78,14 @@ const FieldContent = styled.span`
 `;
 
 const IconsList = styled.div`
-    display: flex;
-    justify-content: space-around;
-    width: 10rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    column-gap: 1rem;
+    width: 14rem;
 
     @media only screen and (min-width: 24rem) {
-        max-width: 16rem;
+        max-width: 30rem;
     }
 `;
 
@@ -118,11 +120,16 @@ const SummaryCard = () => {
         </Container>
     );
 
+    const iconStyle = {
+        height: '2.5rem',
+        color: 'black',
+    }
+
     const socialsSection = (
         <IconsList>
-            <Linkedin />
-            <Github />
-            <Twitter />
+            <a href='https://linkedin.com/in/FabianDean' rel='noopener noreferrer' target='_blank'><simpleIcons.Linkedin style={iconStyle} /></a>
+            <a href='https://github.com/FabianDean' rel='noopener noreferrer' target='_blank'><simpleIcons.Github style={iconStyle} /></a>
+            <a href='https://twitter.com/FabianDean_dev' rel='noopener noreferrer' target='_blank'><simpleIcons.Twitter style={iconStyle} /></a>
         </IconsList>
     );
 
@@ -142,7 +149,7 @@ const SummaryCard = () => {
                     <Spacer />
                 </Container>
                 <Spacer />
-                <Container justifyContent='center'>
+                <Container noPadding justifyContent='space-evenly'>
                     {socialsSection}
                 </Container>
             </Body>
