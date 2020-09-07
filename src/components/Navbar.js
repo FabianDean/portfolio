@@ -35,9 +35,15 @@ const StyledAnchor = styled(Anchor)`
     }
 `;
 
+const StyledBox = styled(Box)`
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.97);
+    height: 3.5rem;
+`;
+
 const AppBar = (props) => (
-    <Box
-        style={{ position: 'sticky', height: '3.5rem' }}
+    <StyledBox
         tag='header'
         direction='row'
         align='center'
