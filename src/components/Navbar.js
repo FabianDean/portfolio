@@ -24,9 +24,15 @@ const StyledMenu = styled(Menu)`
     }
 `;
 
-const Title = styled(Button)`
+const Title = styled(Anchor)`
     font-size: 1.6rem;
     font-weight: bold;
+    color: black;
+    text-decoration: none !important;
+
+    :focus {
+        box-shadow: none !important;
+    }
 `;
 
 const StyledAnchor = styled(Anchor)`
@@ -63,7 +69,7 @@ const Navbar = () => {
 
     return (
         <AppBar>
-            <Title label={title} plain hoverIndicator />
+            <Title href='#' label={title} plain hoverIndicator />
             <StyledNav direction='row' >
                 <StyledAnchor label='Projects' href='#projects' color='black' hoverIndicator />
                 <StyledAnchor label='Skills' href='#skills' color='black' hoverIndicator />

@@ -7,6 +7,12 @@ import './fonts/Lekton-Italic.ttf';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import ReactGA from 'react-ga';
+
+const trackingCode = 'UA-179609093-1';
+
+ReactGA.initialize(trackingCode);
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 ReactDOM.render(
   <React.StrictMode>
