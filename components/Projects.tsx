@@ -4,7 +4,7 @@ import { projects, site } from "@/data/content";
 export default function Projects() {
   return (
     <section id="projects" className="section container">
-      <SectionHeader index="04" title="Earlier projects" />
+      <SectionHeader index="03" title="Earlier projects" />
       <ul className="ledger">
         {projects.map((project) => (
           <li className="ledger-row" key={project.name}>

@@ -2,8 +2,8 @@ import { site } from "@/data/content";
 
 const links = [
   { href: "#experience", label: "Experience" },
-  { href: "#shipped", label: "Shipped" },
   { href: "#skills", label: "Skills" },
+  { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
 ];
 

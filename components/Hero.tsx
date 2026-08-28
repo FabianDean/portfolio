@@ -5,7 +5,12 @@ export default function Hero() {
   return (
     <section className="hero container">
       <div className="hero-text">
-        <h1>{hero.heading}</h1>
+        <h1>
+          {hero.heading}
+          <span className="dot" aria-hidden="true">
+            .
+          </span>
+        </h1>
         <p className="hero-lede">{hero.lede}</p>
         <dl className="spec">
           {hero.spec.map((row) => (
@@ -37,15 +42,16 @@ export default function Hero() {
           </a>
         </div>
       </div>
-      <div className="hero-portrait">
+      <figure className="polaroid">
         <Image
           src="/portrait.jpg"
           alt={`Portrait of ${site.name}`}
-          width={288}
-          height={360}
+          width={260}
+          height={312}
           priority
         />
-      </div>
+        <figcaption>{hero.portraitCaption}</figcaption>
+      </figure>
     </section>
   );
 }

@@ -4,7 +4,7 @@ import { contact, site } from "@/data/content";
 export default function Contact() {
   return (
     <section id="contact" className="section container">
-      <SectionHeader index="05" title={contact.heading} />
+      <SectionHeader index="04" title={contact.heading} />
       <p className="contact-copy">{contact.copy}</p>
       <a className="contact-email" href={`mailto:${site.email}`}>
         {site.email}

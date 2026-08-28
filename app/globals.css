@@ -11,6 +11,7 @@
   --rule: rgba(28, 26, 23, 0.28);
   --accent: #c2410c;
   --accent-contrast: #fffdf8;
+  --accent-soft: rgba(194, 65, 12, 0.16);
   --nav-bg: rgba(247, 243, 236, 0.88);
 
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
@@ -29,6 +30,7 @@
     --rule: rgba(236, 229, 218, 0.3);
     --accent: #fb923c;
     --accent-contrast: #1c1a17;
+    --accent-soft: rgba(251, 146, 60, 0.2);
     --nav-bg: rgba(22, 19, 16, 0.88);
   }
 }
@@ -81,6 +83,19 @@ a:hover {
 ::selection {
   background: var(--accent);
   color: var(--accent-contrast);
+}
+
+.dot {
+  color: var(--accent);
+}
+
+mark {
+  background: var(--accent-soft);
+  color: inherit;
+  padding: 0.05em 0.2em;
+  border-radius: 4px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 :focus-visible {
@@ -229,12 +244,15 @@ img {
 .section-index {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--accent);
+  border: 1.5px solid var(--accent);
+  border-radius: 5px;
+  padding: 0.05rem 0.4rem;
 }
 
 .section-header h2 {
-  font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+  font-size: clamp(1.9rem, 4.5vw, 2.6rem);
 }
 
 .section-rule {
@@ -259,7 +277,7 @@ img {
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 6.5vw, 3.9rem);
+  font-size: clamp(2.75rem, 7vw, 4.5rem);
   margin-bottom: 1.25rem;
 }
 
@@ -301,30 +319,58 @@ img {
   font-size: 0.98rem;
 }
 
-.hero-portrait img {
-  width: 14rem;
-  height: 17.5rem;
+.polaroid {
+  margin: 0.5rem 0.5rem 0 0;
+  background: #fffdf8;
+  border: 1px solid rgba(28, 26, 23, 0.1);
+  border-radius: 4px;
+  padding: 0.55rem 0.55rem 0.2rem;
+  box-shadow: 0 14px 34px rgba(28, 26, 23, 0.22);
+  transform: rotate(-2.5deg);
+  transition: transform 0.35s ease;
+}
+
+.polaroid:hover {
+  transform: rotate(0deg);
+}
+
+.polaroid img {
+  width: 13rem;
+  height: 15.5rem;
   object-fit: cover;
   object-position: 70% 20%;
-  border-radius: 6px;
-  border: 1px solid var(--rule);
+  border-radius: 2px;
   filter: grayscale(1) contrast(1.05);
   transition: filter 0.4s ease;
 }
 
-.hero-portrait img:hover {
+.polaroid:hover img {
   filter: none;
+}
+
+.polaroid figcaption {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: #6b645a;
+  text-align: center;
+  padding-block: 0.45rem 0.3rem;
 }
 
 @media (max-width: 48rem) {
   .hero {
     flex-direction: column-reverse;
-    gap: 2rem;
+    gap: 2.25rem;
     padding-block: 3rem 0;
   }
 
-  .hero-portrait img {
-    width: 9.5rem;
+  .polaroid {
+    align-self: flex-start;
+    margin-left: 0.35rem;
+  }
+
+  .polaroid img {
+    width: 10rem;
     height: 12rem;
   }
 }
@@ -341,39 +387,17 @@ img {
   }
 }
 
-/* -------------------------------- experience -------------------------------- */
+/* ---------------------------------- story ----------------------------------- */
 
-.xp-head {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 0.35rem 1.5rem;
-  margin-bottom: 0.9rem;
+.story p {
+  max-width: 40rem;
+  margin-bottom: 1.15rem;
+  font-size: 1.05rem;
 }
 
-.xp-head h3 {
-  font-size: 1.45rem;
-}
-
-.xp-role {
-  color: var(--accent);
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.95rem;
-  margin-top: 0.4rem;
-}
-
-.xp-period {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-}
-
-.xp-summary {
-  color: var(--text-secondary);
-  max-width: 42rem;
+.story .mlink {
+  display: inline-block;
+  margin-top: 0.25rem;
 }
 
 .education {

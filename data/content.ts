@@ -1,6 +1,9 @@
 /**
  * All site copy lives here — edit this file to change any text on the page
  * without touching markup or styles.
+ *
+ * In `story.paragraphs`, wrap a phrase in ==double equals== to give it the
+ * orange marker highlight.
  */
 
 export const site = {
@@ -9,7 +12,7 @@ export const site = {
   title: "Senior Software Engineer",
   url: "https://fabiandean.dev",
   description:
-    "Senior Software Engineer at Smarkets. Five-plus years building betting products across web and native apps with React, React Native, TypeScript, and Next.js.",
+    "Senior Software Engineer at Smarkets, based in Los Angeles. Five-plus years building betting products across web and native apps with TypeScript, React, React Native, and Next.js.",
   email: "fabian@fabiandean.dev",
   github: "https://github.com/FabianDean",
   linkedin: "https://linkedin.com/in/FabianDean",
@@ -18,72 +21,46 @@ export const site = {
 
 export const hero = {
   heading: site.name,
-  lede: "Frontend engineer at Smarkets. For the past five years I've built the exchange and its SBK sportsbook across web and native apps — most recently rebuilding the Smarkets site and app from scratch for the company's new brand.",
+  lede: "Hi — I'm a frontend engineer at Smarkets, where I've spent the past five years building the exchange and its SBK sportsbook across web and native apps. Lately that's meant rebuilding the Smarkets site and app from scratch for the company's new brand.",
   spec: [
     { label: "Role", value: "Senior Software Engineer" },
     { label: "Team", value: "Frontend · Smarkets" },
+    { label: "Base", value: "Los Angeles, CA · Remote" },
     { label: "Since", value: "January 2021" },
   ],
+  portraitCaption: "not pictured: the cats",
 };
 
-export const experience = {
+export const story = {
   company: "Smarkets",
-  role: "Software Engineer → Senior Software Engineer",
-  period: "January 2021 — Present",
-  summary:
-    "Joined the frontend team in January 2021; now a Senior Software Engineer. I've worked across everything we ship — the Smarkets exchange and the SBK sportsbook, on web and native mobile.",
+  heading: "The Smarkets years",
+  paragraphs: [
+    "I joined Smarkets' frontend team in January 2021, and I've had a hand in everything we've shipped since — the exchange and the SBK sportsbook, on the web and in native apps.",
+    "My first years were spent deep in the ==SBK app==, building feature after feature as it grew into a fully-fledged sportsbook. When it was time to bring SBK to the browser, I helped launch ==SBK web==.",
+    "Then came the two biggest builds of my career so far: rewriting the ==Smarkets site== from scratch in Next.js to debut the company's new brand, and rebuilding the ==Smarkets app== from the ground up to match it. Along the way, in 2024, I was promoted to ==Senior Software Engineer==.",
+  ],
+  cta: { url: "https://smarkets.com", label: "See the site" },
   education: {
     degree: "B.S. Computer Science",
     school: "Cal Poly Pomona",
   },
 };
 
-export type ShippedItem = {
-  name: string;
-  platform: string;
-  description: string;
-  link?: { url: string; label: string };
+export const details = {
+  heading: "Skills, etc",
+  rows: [
+    {
+      label: "Stack",
+      value:
+        "TypeScript · React · Next.js · React Query · Redux · React Native · Expo · Docker",
+    },
+    {
+      label: "Off the clock",
+      value:
+        "Reading, lifting, wrestling & jiu-jitsu, and time with my fiancée and our cats.",
+    },
+  ],
 };
-
-export const shipped: ShippedItem[] = [
-  {
-    name: "Smarkets site",
-    platform: "Web",
-    description: "Complete rewrite in Next.js, launched with the new brand.",
-    link: { url: "https://smarkets.com", label: "visit" },
-  },
-  {
-    name: "Smarkets app",
-    platform: "iOS · Android",
-    description:
-      "Rebuilt from scratch to replace the legacy app and match the new brand.",
-  },
-  {
-    name: "SBK web",
-    platform: "Web",
-    description: "Helped take the sportsbook from app-only to the browser.",
-  },
-  {
-    name: "SBK app",
-    platform: "iOS · Android",
-    description: "Years of feature work across the sportsbook.",
-  },
-];
-
-export const skills: { group: string; items: string[] }[] = [
-  {
-    group: "Languages",
-    items: ["TypeScript", "JavaScript", "HTML", "CSS", "Dart"],
-  },
-  {
-    group: "Frameworks",
-    items: ["React", "React Native", "Next.js", "Node.js", "Flutter"],
-  },
-  {
-    group: "Practices",
-    items: ["Git", "CI/CD", "Automated testing", "iOS & Android releases"],
-  },
-];
 
 export type Project = {
   name: string;

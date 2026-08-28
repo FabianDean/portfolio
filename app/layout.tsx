@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { site, experience } from "@/data/content";
+import { site, story } from "@/data/content";
 import "./globals.css";
 
 const lekton = localFont({
@@ -48,8 +48,13 @@ const personSchema = {
   "@type": "Person",
   name: site.name,
   jobTitle: site.title,
-  worksFor: { "@type": "Organization", name: experience.company },
-  alumniOf: { "@type": "CollegeOrUniversity", name: experience.education.school },
+  worksFor: { "@type": "Organization", name: story.company },
+  alumniOf: { "@type": "CollegeOrUniversity", name: story.education.school },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Los Angeles",
+    addressRegion: "CA",
+  },
   url: site.url,
   sameAs: [site.github, site.linkedin],
 };
