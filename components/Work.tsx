@@ -1,38 +1,31 @@
 import SectionHeader from "./SectionHeader";
-import { work } from "@/data/content";
+import { shipped } from "@/data/content";
 
 export default function Work() {
   return (
-    <section id="work" className="section container">
-      <SectionHeader eyebrow="Selected work" title="Built at Smarkets" />
-      <div className="cards">
-        {work.map((item) => (
-          <article className="card" key={item.index}>
-            <div className="card-top">
-              <span className="card-index">{item.index}</span>
-              <div className="card-tags">
-                {item.tags.map((tag) => (
-                  <span className="tag" key={tag}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
+    <section id="shipped" className="section container">
+      <SectionHeader index="02" title="Shipped" />
+      <ul className="ledger">
+        {shipped.map((item) => (
+          <li className="ledger-row" key={item.name}>
             <h3>{item.name}</h3>
-            <p>{item.description}</p>
-            {item.link && (
+            <p className="ledger-desc">{item.description}</p>
+            <span className="ledger-meta">{item.platform}</span>
+            {item.link ? (
               <a
-                className="card-link"
+                className="mlink"
                 href={item.link.url}
                 rel="noopener noreferrer"
                 target="_blank"
               >
                 {item.link.label} ↗
               </a>
+            ) : (
+              <span className="ledger-spacer" aria-hidden="true" />
             )}
-          </article>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

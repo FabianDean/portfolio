@@ -1,13 +1,16 @@
 type SectionHeaderProps = {
-  eyebrow: string;
+  index: string;
   title: string;
 };
 
-export default function SectionHeader({ eyebrow, title }: SectionHeaderProps) {
+export default function SectionHeader({ index, title }: SectionHeaderProps) {
   return (
     <div className="section-header">
-      <p className="eyebrow">{eyebrow}</p>
+      <span className="section-index" aria-hidden="true">
+        {index}
+      </span>
       <h2>{title}</h2>
+      <span className="section-rule" aria-hidden="true" />
     </div>
   );
 }

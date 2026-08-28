@@ -9,7 +9,7 @@ export const site = {
   title: "Senior Software Engineer",
   url: "https://fabiandean.dev",
   description:
-    "Senior Software Engineer at Smarkets with 5+ years building sports-betting products across web and native apps — React, React Native, TypeScript, and Next.js.",
+    "Senior Software Engineer at Smarkets. Five-plus years building betting products across web and native apps with React, React Native, TypeScript, and Next.js.",
   email: "fabian@fabiandean.dev",
   github: "https://github.com/FabianDean",
   linkedin: "https://linkedin.com/in/FabianDean",
@@ -17,67 +17,56 @@ export const site = {
 };
 
 export const hero = {
-  eyebrow: "Senior Software Engineer · Frontend",
   heading: site.name,
-  lede: "I build sports-betting products at Smarkets — five-plus years shipping across native apps and the web, from years of feature work on the SBK sportsbook to ground-up rebuilds of the Smarkets app and site.",
+  lede: "Frontend engineer at Smarkets. For the past five years I've built the exchange and its SBK sportsbook across web and native apps — most recently rebuilding the Smarkets site and app from scratch for the company's new brand.",
+  spec: [
+    { label: "Role", value: "Senior Software Engineer" },
+    { label: "Team", value: "Frontend · Smarkets" },
+    { label: "Since", value: "January 2021" },
+  ],
 };
 
 export const experience = {
   company: "Smarkets",
   role: "Software Engineer → Senior Software Engineer",
-  team: "Frontend team",
   period: "January 2021 — Present",
   summary:
-    "Five-plus years on the team behind all of Smarkets' user-facing products: the Smarkets betting exchange (web and app) and the SBK sportsbook (app and web).",
-  highlights: [
-    "Ship across all four of Smarkets' frontend products — the SBK app, SBK web, the Smarkets app, and smarkets.com.",
-    "Built two of the company's ground-up rebuilds: the complete Next.js rewrite of smarkets.com and the new Smarkets app 3.0.0.",
-    "Years of feature work on the SBK sportsbook app, then helped take SBK to the browser with the launch of SBK web.",
-    "Grew from engineer to Senior Software Engineer on the frontend team.",
-  ],
+    "Joined the frontend team in January 2021; now a Senior Software Engineer. I've worked across everything we ship — the Smarkets exchange and the SBK sportsbook, on web and native mobile.",
   education: {
     degree: "B.S. Computer Science",
     school: "Cal Poly Pomona",
   },
 };
 
-export type WorkItem = {
-  index: string;
+export type ShippedItem = {
   name: string;
-  tags: string[];
+  platform: string;
   description: string;
   link?: { url: string; label: string };
 };
 
-export const work: WorkItem[] = [
+export const shipped: ShippedItem[] = [
   {
-    index: "01",
-    name: "smarkets.com rewrite",
-    tags: ["Web", "Next.js"],
-    description:
-      "A complete, ground-up rewrite of the Smarkets website as a Next.js project — replacing the legacy site and debuting the company's new branding.",
-    link: { url: "https://smarkets.com", label: "smarkets.com" },
+    name: "Smarkets site",
+    platform: "Web",
+    description: "Complete rewrite in Next.js, launched with the new brand.",
+    link: { url: "https://smarkets.com", label: "visit" },
   },
   {
-    index: "02",
-    name: "Smarkets app 3.0.0",
-    tags: ["iOS", "Android"],
+    name: "Smarkets app",
+    platform: "iOS · Android",
     description:
-      "The exchange's new mobile app, built to replace the legacy 2.x app — a full rebuild that brought the mobile experience in line with the new brand introduced on the rewritten site.",
+      "Rebuilt from scratch to replace the legacy app and match the new brand.",
   },
   {
-    index: "03",
-    name: "SBK app",
-    tags: ["iOS", "Android"],
-    description:
-      "Smarkets' sportsbook app. Core contributor for several years, building and shipping features across the product as SBK grew into a fully-fledged mobile sportsbook.",
-  },
-  {
-    index: "04",
     name: "SBK web",
-    tags: ["Web"],
-    description:
-      "Helped bring SBK to the browser — taking what had been a mobile-only sportsbook to the open web and launching SBK's web platform.",
+    platform: "Web",
+    description: "Helped take the sportsbook from app-only to the browser.",
+  },
+  {
+    name: "SBK app",
+    platform: "iOS · Android",
+    description: "Years of feature work across the sportsbook.",
   },
 ];
 
@@ -87,11 +76,11 @@ export const skills: { group: string; items: string[] }[] = [
     items: ["TypeScript", "JavaScript", "HTML", "CSS", "Dart"],
   },
   {
-    group: "Frameworks & libraries",
+    group: "Frameworks",
     items: ["React", "React Native", "Next.js", "Node.js", "Flutter"],
   },
   {
-    group: "Practices & tools",
+    group: "Practices",
     items: ["Git", "CI/CD", "Automated testing", "iOS & Android releases"],
   },
 ];
@@ -130,6 +119,6 @@ export const projects: Project[] = [
 ];
 
 export const contact = {
-  heading: "Let's talk",
-  copy: "The fastest way to reach me is email — or find me on LinkedIn and GitHub. Whether it's about a role, a product, or just frontend engineering, my inbox is open.",
+  heading: "Contact",
+  copy: "If you're hiring, building something interesting, or just want to compare notes on frontend, email is the fastest way to reach me.",
 };

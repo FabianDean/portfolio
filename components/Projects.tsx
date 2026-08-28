@@ -4,16 +4,14 @@ import { projects, site } from "@/data/content";
 export default function Projects() {
   return (
     <section id="projects" className="section container">
-      <SectionHeader eyebrow="Earlier projects" title="Personal builds" />
-      <ul className="projects">
+      <SectionHeader index="04" title="Earlier projects" />
+      <ul className="ledger">
         {projects.map((project) => (
-          <li className="project" key={project.name}>
-            <div>
-              <h3>{project.name}</h3>
-              <p>{project.description}</p>
-            </div>
+          <li className="ledger-row" key={project.name}>
+            <h3>{project.name}</h3>
+            <p className="ledger-desc">{project.description}</p>
             <a
-              className="card-link"
+              className="mlink"
               href={project.link.url}
               rel="noopener noreferrer"
               target="_blank"

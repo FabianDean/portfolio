@@ -1,8 +1,19 @@
 import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { site, experience } from "@/data/content";
 import "./globals.css";
+
+const lekton = localFont({
+  src: [
+    { path: "./fonts/Lekton-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./fonts/Lekton-Bold.ttf", weight: "700", style: "normal" },
+    { path: "./fonts/Lekton-Italic.ttf", weight: "400", style: "italic" },
+  ],
+  variable: "--font-lekton",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -27,8 +38,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#faf9f7" },
-    { media: "(prefers-color-scheme: dark)", color: "#0e1013" },
+    { media: "(prefers-color-scheme: light)", color: "#f7f3ec" },
+    { media: "(prefers-color-scheme: dark)", color: "#161310" },
   ],
 };
 
@@ -47,7 +58,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={lekton.variable}>
       <body id="top">
         <script
           type="application/ld+json"

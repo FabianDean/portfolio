@@ -2,7 +2,7 @@ import { site } from "@/data/content";
 
 const links = [
   { href: "#experience", label: "Experience" },
-  { href: "#work", label: "Work" },
+  { href: "#shipped", label: "Shipped" },
   { href: "#skills", label: "Skills" },
   { href: "#contact", label: "Contact" },
 ];
