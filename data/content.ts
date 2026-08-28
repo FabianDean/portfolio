@@ -16,7 +16,6 @@ export const site = {
   email: "fabian@fabiandean.dev",
   github: "https://github.com/FabianDean",
   linkedin: "https://linkedin.com/in/FabianDean",
-  repo: "https://github.com/FabianDean/portfolio",
 };
 
 export const hero = {

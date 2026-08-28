@@ -9,12 +9,6 @@ export default function Footer() {
         <span>
           © {year} {site.name}
         </span>
-        <span>
-          Set in Lekton · built with Next.js ·{" "}
-          <a href={site.repo} rel="noopener noreferrer" target="_blank">
-            source ↗
-          </a>
-        </span>
       </div>
     </footer>
   );
