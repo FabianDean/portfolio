@@ -12,7 +12,7 @@ export const site = {
   title: "Senior Software Engineer",
   url: "https://fabiandean.dev",
   description:
-    "Senior Software Engineer at Smarkets, based in Los Angeles. Five-plus years building betting products across web and native apps with TypeScript, React, React Native, and Next.js.",
+    "Senior software engineer in Los Angeles. Five-plus years building betting products across web and native apps with TypeScript, React, React Native, and Next.js.",
   email: "fabian@fabiandean.dev",
   github: "https://github.com/FabianDean",
   linkedin: "https://linkedin.com/in/FabianDean",
@@ -21,7 +21,7 @@ export const site = {
 
 export const hero = {
   heading: site.name,
-  lede: "Hi — I'm a frontend engineer at Smarkets, where I've spent the past five years building the exchange and its SBK sportsbook across web and native apps. Lately that's meant rebuilding the Smarkets site and app from scratch for the company's new brand.",
+  lede: "Hi — I'm a frontend engineer in Los Angeles. I've spent the past five years building betting products — an exchange and its sportsbook — across web and native apps, most recently rebuilding a site and an app from scratch for a brand refresh.",
   spec: [
     { label: "Role", value: "Senior Software Engineer" },
     { label: "Team", value: "Frontend · Smarkets" },
@@ -33,13 +33,12 @@ export const hero = {
 
 export const story = {
   company: "Smarkets",
-  heading: "The Smarkets years",
+  heading: "The story so far",
   paragraphs: [
-    "I joined Smarkets' frontend team in January 2021, and I've had a hand in everything we've shipped since — the exchange and the SBK sportsbook, on the web and in native apps.",
-    "My first years were spent deep in the ==SBK app==, building feature after feature as it grew into a fully-fledged sportsbook. When it was time to bring SBK to the browser, I helped launch ==SBK web==.",
-    "Then came the two biggest builds of my career so far: rewriting the ==Smarkets site== from scratch in Next.js to debut the company's new brand, and rebuilding the ==Smarkets app== from the ground up to match it. Along the way, in 2024, I was promoted to ==Senior Software Engineer==.",
+    "Since January 2021 I've been on the frontend team at Smarkets, a betting exchange — and I've had a hand in everything we've shipped since, on the web and in native apps.",
+    "My first years were spent deep in our ==sportsbook app==, building feature after feature as it grew into a fully-fledged product — then I helped ==launch it on the web==, taking it from app-only to the browser.",
+    "More recently came the two biggest builds of my career so far: ==rewriting our site from scratch== in Next.js for a brand refresh, and ==rebuilding our app from the ground up== to match it. Along the way, in 2024, I was promoted to ==Senior Software Engineer==.",
   ],
-  cta: { url: "https://smarkets.com", label: "See the site" },
   education: {
     degree: "B.S. Computer Science",
     school: "Cal Poly Pomona",
@@ -97,5 +96,5 @@ export const projects: Project[] = [
 
 export const contact = {
   heading: "Contact",
-  copy: "If you're hiring, building something interesting, or just want to compare notes on frontend, email is the fastest way to reach me.",
+  copy: "Email is the best way to reach me — whether it's about frontend, a side project, a book worth reading, or where to train in LA.",
 };

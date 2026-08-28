@@ -28,14 +28,6 @@ export default function Story() {
             <Highlighted text={paragraph} />
           </p>
         ))}
-        <a
-          className="mlink"
-          href={story.cta.url}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          {story.cta.label} ↗
-        </a>
       </div>
       <p className="education">
         <span className="education-label">Education</span>
