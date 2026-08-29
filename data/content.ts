@@ -20,7 +20,7 @@ export const site = {
 
 export const hero = {
   heading: site.name,
-  lede: "Hi — I'm a frontend engineer in Los Angeles. I've spent the past five years building real-time consumer products — a trading exchange and its sports app — across web and native, most recently rebuilding a site and an app from scratch for a brand refresh.",
+  lede: "Hi — I'm a frontend engineer in Los Angeles. I've spent the past five years building real-time consumer products — a trading exchange and its sportsbook — across web and native, most recently rebuilding a site and an app from scratch for a brand refresh.",
   spec: [
     { label: "Role", value: "Senior Software Engineer" },
     { label: "Team", value: "Frontend · Smarkets" },
@@ -35,7 +35,7 @@ export const story = {
   heading: "The story so far",
   paragraphs: [
     "Since January 2021 I've been on the frontend team at Smarkets, a real-time trading exchange — and I've had a hand in everything we've shipped since, on the web and in native apps.",
-    "My first years were spent deep in our ==sports app==, building feature after feature as it grew into a fully-fledged product — then I helped ==launch it on the web==, taking it from app-only to the browser.",
+    "My first years were spent deep in our ==sportsbook app==, building feature after feature as it grew into a fully-fledged product — then I helped ==launch it on the web==, taking it from app-only to the browser.",
     "More recently came the two biggest builds of my career so far: ==rewriting our site from scratch== in Next.js for a brand refresh, and ==rebuilding our app from the ground up== to match it. Along the way, in 2024, I was promoted to ==Senior Software Engineer==.",
   ],
   education: {
