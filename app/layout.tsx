@@ -26,13 +26,20 @@ export const metadata: Metadata = {
     url: site.url,
     siteName: site.shortName,
     type: "profile",
-    images: ["/portrait.jpg"],
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: `${site.name} — ${site.title}`,
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `${site.name} — ${site.title}`,
     description: site.description,
-    images: ["/portrait.jpg"],
+    images: ["/og.png"],
   },
 };
 
