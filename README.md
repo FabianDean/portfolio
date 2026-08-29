@@ -23,4 +23,4 @@ All copy — hero, experience, work highlights, skills, projects, contact — li
 
 ## Deploying
 
-`npm run build` produces a fully static site in `out/` (configured via `output: "export"` in `next.config.ts`), deployable to any static host — Vercel, Netlify, GitHub Pages, Cloudflare Pages, or a plain file server.
+`npm run build` produces a fully static site in `out/` (configured via `output: "export"` in `next.config.ts`). The site is hosted on Netlify — build settings live in [`netlify.toml`](netlify.toml), so connecting the repo is all the configuration needed.
