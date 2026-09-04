@@ -11,8 +11,8 @@ function CatHead({ variant, id }: { variant: Variant; id: string }) {
   const clip = `${id}-head`;
   return (
     <g className="cat-head">
-      <path className="cat-fur cat-ear-l" d="M18 38 L15 11 L37 24 Z" />
-      <path className="cat-fur cat-ear-r" d="M43 24 L65 11 L62 38 Z" />
+      <path className="cat-fur cat-ear-l" d="M20 36 C 16 28, 15 18, 20 15 C 24 13, 30 19, 34 25 Z" />
+      <path className="cat-fur cat-ear-r" d="M60 36 C 64 28, 65 18, 60 15 C 56 13, 50 19, 46 25 Z" />
       <circle className="cat-fur" cx="40" cy="48" r="24" />
       {variant === "tortie" && (
         <>
@@ -25,8 +25,8 @@ function CatHead({ variant, id }: { variant: Variant; id: string }) {
           </g>
         </>
       )}
-      <path className="cat-inner" d="M22 33 L21 19 L32 27 Z" />
-      <path className="cat-inner" d="M48 27 L59 19 L58 33 Z" />
+      <path className="cat-inner" d="M23 33 C 20 27, 19 21, 22 19 C 25 18, 29 22, 32 27 Z" />
+      <path className="cat-inner" d="M57 33 C 60 27, 61 21, 58 19 C 55 18, 51 22, 48 27 Z" />
       <circle className="cat-blush" cx="25" cy="57" r="3.6" />
       <circle className="cat-blush" cx="55" cy="57" r="3.6" />
       <path className="cat-nose" d="M37.5 56.5 h5 l-2.5 3 z" />

@@ -549,7 +549,7 @@ img {
 }
 
 .cat-top {
-  top: -1.3rem;
+  top: -1.5rem;
   right: 2.2rem;
   animation: cat-pop 5s ease-in-out infinite;
 }
