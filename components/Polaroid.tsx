@@ -24,60 +24,68 @@ export default function Polaroid() {
     <div className={`polaroid-wrap${walking ? " is-walking" : ""}`}>
       <svg
         className="cat"
-        viewBox="0 0 124 82"
-        width="112"
-        height="74"
+        viewBox="0 0 140 100"
+        width="120"
+        height="86"
         aria-hidden="true"
         focusable="false"
         onAnimationEnd={onCatAnimationEnd}
       >
         <g className="cat-body">
           {/* tail: ink outline under a fill stroke */}
-          <path
-            className="cat-tail"
-            d="M102 48 C 118 44, 122 26, 110 14"
-            fill="none"
-            stroke="var(--cat-ink)"
-            strokeWidth="9"
-            strokeLinecap="round"
-          />
-          <path
-            className="cat-tail"
-            d="M102 48 C 118 44, 122 26, 110 14"
-            fill="none"
-            stroke="var(--cat-fill)"
-            strokeWidth="5"
-            strokeLinecap="round"
-          />
+          <path className="cat-tail cat-tail-outline" d="M116 62 C 136 60, 140 38, 126 30" />
+          <path className="cat-tail cat-tail-fill" d="M116 62 C 136 60, 140 38, 126 30" />
+
           {/* far legs (behind the body) */}
-          <rect className="cat-leg cat-leg-b" x="40" y="58" width="9" height="22" rx="4.5" />
-          <rect className="cat-leg cat-leg-a" x="88" y="58" width="9" height="22" rx="4.5" />
-          {/* body */}
-          <ellipse cx="70" cy="52" rx="34" ry="19" className="cat-fur" />
-          <g className="cat-lines" fill="none">
-            <path d="M74 36 q3 6 0 12" />
-            <path d="M84 37 q3 6 0 12" />
-            <path d="M94 40 q3 6 0 12" />
+          <g className="cat-leg cat-leg-b">
+            <rect className="cat-fur" x="50" y="72" width="11" height="20" rx="5.5" />
+            <path className="cat-toes" d="M53.5 87 v4 M57.5 87 v4" />
           </g>
+          <g className="cat-leg cat-leg-a">
+            <rect className="cat-fur" x="96" y="72" width="11" height="20" rx="5.5" />
+            <path className="cat-toes" d="M99.5 87 v4 M103.5 87 v4" />
+          </g>
+
+          {/* body, cream belly, tabby stripes */}
+          <ellipse className="cat-fur" cx="84" cy="66" rx="36" ry="22" />
+          <ellipse className="cat-cream" cx="78" cy="76" rx="18" ry="9" />
+          <path className="cat-stripes" d="M86 46 q3 6 0 12 M98 47 q3 6 0 12 M109 51 q3 6 0 11" />
+
           {/* near legs (in front of the body) */}
-          <rect className="cat-leg cat-leg-a" x="52" y="58" width="9" height="22" rx="4.5" />
-          <rect className="cat-leg cat-leg-b" x="76" y="58" width="9" height="22" rx="4.5" />
+          <g className="cat-leg cat-leg-a">
+            <rect className="cat-fur" x="60" y="72" width="11" height="20" rx="5.5" />
+            <path className="cat-toes" d="M63.5 87 v4 M67.5 87 v4" />
+          </g>
+          <g className="cat-leg cat-leg-b">
+            <rect className="cat-fur" x="106" y="72" width="11" height="20" rx="5.5" />
+            <path className="cat-toes" d="M109.5 87 v4 M113.5 87 v4" />
+          </g>
+
           {/* head */}
           <g className="cat-head">
-            <path className="cat-fur" d="M16 28 L11 6 L31 18 Z" />
-            <path className="cat-fur" d="M31 18 L50 5 L46 28 Z" />
-            <circle className="cat-fur" cx="31" cy="38" r="18" />
-            <g className="cat-lines" fill="none">
-              <path d="M20 37 q4 -5 8 0" />
-              <path d="M34 37 q4 -5 8 0" />
-              <path d="M31 46 q-3 4 -6 1" />
-              <path d="M31 46 q3 4 6 1" />
-              <path d="M14 41 h-11" />
-              <path d="M14 45 l-10 3" />
-              <path d="M48 41 h11" />
-              <path d="M48 45 l10 3" />
+            <path className="cat-fur" d="M18 38 L15 11 L37 24 Z" />
+            <path className="cat-fur" d="M43 24 L65 11 L62 38 Z" />
+            <circle className="cat-fur" cx="40" cy="48" r="24" />
+            <path className="cat-cream" d="M22 33 L21 19 L32 27 Z" />
+            <path className="cat-cream" d="M48 27 L59 19 L58 33 Z" />
+            <path className="cat-face-lines" d="M31 38 l3 -7 l3 7 l3 -7 l3 7" />
+            <circle className="cat-blush" cx="25" cy="57" r="3.6" />
+            <circle className="cat-blush" cx="55" cy="57" r="3.6" />
+            <ellipse className="cat-cream" cx="40" cy="59" rx="7.5" ry="5" />
+            <path className="cat-nose" d="M37.5 56.5 h5 l-2.5 3 z" />
+            <path className="cat-face-lines" d="M40 59.5 q-2.5 4 -5.5 1.5 M40 59.5 q2.5 4 5.5 1.5" />
+            <path
+              className="cat-whiskers"
+              d="M20 53 q-6 -2 -11 -4 M20 56.5 h-11 M20 60 q-6 2 -11 4 M60 53 q6 -2 11 -4 M60 56.5 h11 M60 60 q6 2 11 4"
+            />
+            {/* wide eyes while peeking (they blink), happy eyes while walking */}
+            <g className="cat-eyes-open">
+              <circle className="cat-eye" cx="32" cy="50" r="3.3" />
+              <circle className="cat-eye" cx="48" cy="50" r="3.3" />
+              <circle className="cat-eye-shine" cx="33.2" cy="48.8" r="1.2" />
+              <circle className="cat-eye-shine" cx="49.2" cy="48.8" r="1.2" />
             </g>
-            <path d="M28 43 h6 l-3 3 z" fill="var(--cat-ink)" />
+            <path className="cat-eyes-happy" d="M27 51 q5 -6 10 0 M43 51 q5 -6 10 0" />
           </g>
         </g>
       </svg>
