@@ -330,6 +330,8 @@ img {
   /* the card sits on the right of wide screens, so the cats head left */
   --dir: -1;
   --flip: 1;
+  /* one unit drives every cat's size so they always match */
+  --cat-unit: calc(120px / 140);
 }
 
 .polaroid {
@@ -412,6 +414,24 @@ img {
   --cat-fill: #3b332d;
   --cat-patch: #fb923c;
   --cat-eye-rim: #fdeec9;
+}
+
+.cat-side,
+.cat-follow {
+  width: calc(var(--cat-unit) * 150);
+  height: calc(var(--cat-unit) * 100);
+}
+
+.cat-top {
+  width: calc(var(--cat-unit) * 80);
+  height: calc(var(--cat-unit) * 66);
+}
+
+.cat-crease {
+  fill: none;
+  stroke: var(--cat-ink);
+  stroke-width: 2.2;
+  stroke-linecap: round;
 }
 
 .cat-fur {
@@ -784,6 +804,7 @@ img {
     /* the card sits at the left on small screens, so the cats head right */
     --dir: 1;
     --flip: -1;
+    --cat-unit: calc(104px / 140);
     align-self: flex-start;
     margin-left: 0.35rem;
   }
@@ -796,8 +817,6 @@ img {
   .cat-side,
   .cat-follow {
     left: auto;
-    width: 104px;
-    height: 74px;
   }
 
   .cat-side {
@@ -811,8 +830,6 @@ img {
   .cat-top {
     right: auto;
     left: 1.6rem;
-    width: 54px;
-    height: 45px;
   }
 }
 

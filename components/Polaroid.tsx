@@ -53,15 +53,19 @@ function CatHead({ variant, id }: { variant: Variant; id: string }) {
 }
 
 function Leg({ x, phase, sock }: { x: number; phase: "a" | "b"; sock?: boolean }) {
+  const fur = `cat-fur${sock ? " cat-sock" : ""}`;
   return (
     <g className={`cat-leg cat-leg-${phase}`}>
-      <rect className={`cat-fur${sock ? " cat-sock" : ""}`} x={x} y="72" width="11" height="20" rx="5.5" />
-      <path className="cat-toes" d={`M${x + 3.5} 87 v4 M${x + 7.5} 87 v4`} />
+      <rect className={fur} x={x} y="64" width="9" height="26" rx="4.5" />
+      <ellipse className={fur} cx={x + 4.5} cy="90" rx="6.2" ry="3.4" />
+      <path className="cat-toes" d={`M${x + 2.5} 90.5 v2 M${x + 6.5} 90.5 v2`} />
     </g>
   );
 }
 
-const TAIL = "M116 62 C 136 60, 140 38, 126 30";
+const TAIL = "M123 64 C 134 62, 141 48, 135 34 C 133 28, 127 27, 124 31";
+const BODY =
+  "M60 46 C 74 40, 96 39, 112 44 C 124 48, 130 58, 128 68 C 127 75, 120 79, 108 79 L 72 79 C 62 79, 56 74, 55 66 C 54 58, 56 50, 60 46 Z";
 
 /** Full-body walking doodle. */
 function CatDoodle({ variant, className, id }: { variant: Variant; className: string; id: string }) {
@@ -69,8 +73,8 @@ function CatDoodle({ variant, className, id }: { variant: Variant; className: st
   return (
     <svg
       className={`cat cat--${variant} ${className}`}
-      viewBox="0 0 140 100"
-      width="120"
+      viewBox="0 0 150 100"
+      width="129"
       height="86"
       aria-hidden="true"
       focusable="false"
@@ -87,23 +91,25 @@ function CatDoodle({ variant, className, id }: { variant: Variant; className: st
             strokeDashoffset="-0.7"
           />
         )}
-        <Leg x={50} phase="b" />
-        <Leg x={96} phase="a" />
-        <path className="cat-fur" d="M56 44 C 70 38, 92 38, 108 44 C 120 49, 124 62, 120 74 C 116 84, 106 88, 92 88 L 66 88 C 54 88, 48 78, 49 66 C 50 56, 52 48, 56 44 Z" />
+        <Leg x={57} phase="b" />
+        <Leg x={101} phase="a" />
+        <path className="cat-fur" d={BODY} />
         {variant === "tortie" && (
           <>
             <clipPath id={clip}>
-              <path d="M56 44 C 70 38, 92 38, 108 44 C 120 49, 124 62, 120 74 C 116 84, 106 88, 92 88 L 66 88 C 54 88, 48 78, 49 66 C 50 56, 52 48, 56 44 Z" />
+              <path d={BODY} />
             </clipPath>
             <g className="cat-patch" clipPath={`url(#${clip})`}>
-              <circle cx="102" cy="56" r="13" />
-              <ellipse cx="70" cy="74" rx="11" ry="8" />
-              <circle cx="118" cy="72" r="8" />
+              <circle cx="104" cy="54" r="12" />
+              <ellipse cx="72" cy="70" rx="10" ry="7" />
+              <circle cx="120" cy="66" r="7" />
             </g>
           </>
         )}
-        <Leg x={60} phase="a" sock={variant === "tortie"} />
-        <Leg x={106} phase="b" />
+        {/* haunch: the hind-leg thigh as a crease over the rump */}
+        <path className="cat-crease" d="M99 56 C 94 64, 96 74, 104 79" />
+        <Leg x={64} phase="a" sock={variant === "tortie"} />
+        <Leg x={108} phase="b" />
         <CatHead variant={variant} id={id} />
       </g>
     </svg>
@@ -116,8 +122,8 @@ function CatPeeker({ variant, className }: { variant: Variant; className: string
     <svg
       className={`cat cat--${variant} ${className}`}
       viewBox="0 8 80 66"
-      width="64"
-      height="53"
+      width="69"
+      height="57"
       aria-hidden="true"
       focusable="false"
     >
