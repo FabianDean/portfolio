@@ -43,6 +43,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -319,19 +320,32 @@ img {
   font-size: 0.98rem;
 }
 
-.polaroid {
+/* ------------------------------ polaroid + cat ------------------------------ */
+
+.polaroid-wrap {
+  position: relative;
   margin: 0.5rem 0.5rem 0 0;
+  /* the card sits on the right of wide screens, so the cat heads left */
+  --dir: -1;
+  --flip: 1;
+}
+
+.polaroid {
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin: 0;
+  padding: 0.55rem 0.55rem 0.2rem;
   background: #fffdf8;
   border: 1px solid rgba(28, 26, 23, 0.1);
   border-radius: 4px;
-  padding: 0.55rem 0.55rem 0.2rem;
   box-shadow: 0 14px 34px rgba(28, 26, 23, 0.22);
-  transform: rotate(-2.5deg);
-  transition: transform 0.35s ease;
-}
-
-.polaroid:hover {
-  transform: rotate(0deg);
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  rotate: -2.5deg;
+  transition: rotate 0.35s ease;
+  animation: card-nudge 5s ease-in-out infinite;
 }
 
 .polaroid img {
@@ -344,17 +358,189 @@ img {
   transition: filter 0.4s ease;
 }
 
-.polaroid:hover img {
-  filter: none;
-}
-
-.polaroid figcaption {
+.polaroid-caption {
+  display: block;
   font-family: var(--font-display);
   font-style: italic;
   font-size: 0.82rem;
   color: #6b645a;
   text-align: center;
   padding-block: 0.45rem 0.3rem;
+}
+
+/* straighten and colour up: on hover where hover exists, and while the cat is out */
+@media (hover: hover) {
+  .polaroid:hover {
+    rotate: 0deg;
+  }
+
+  .polaroid:hover img {
+    filter: none;
+  }
+}
+
+.is-walking .polaroid {
+  rotate: 0deg;
+  animation: none;
+}
+
+.is-walking .polaroid img {
+  filter: none;
+}
+
+/* the cat hides behind the card with its head poking past the leading edge */
+.cat {
+  --cat-fill: var(--accent);
+  --cat-ink: var(--text);
+  position: absolute;
+  z-index: 0;
+  bottom: 0.4rem;
+  left: -1.6rem;
+  overflow: visible;
+  transform: translateX(0) scaleX(var(--flip));
+  animation: cat-peek 5s ease-in-out infinite;
+}
+
+.cat-fur,
+.cat-leg {
+  fill: var(--cat-fill);
+  stroke: var(--cat-ink);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.cat-lines {
+  stroke: var(--cat-ink);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.cat-body,
+.cat-leg,
+.cat-tail {
+  transform-box: fill-box;
+}
+
+.cat-leg {
+  transform-origin: 50% 0;
+}
+
+.cat-tail {
+  transform-origin: 0 100%;
+}
+
+.is-walking .cat {
+  animation: cat-walk 4.5s linear forwards;
+}
+
+.is-walking .cat-body {
+  animation: cat-bob 0.4s ease-in-out infinite;
+}
+
+.is-walking .cat-leg-a {
+  animation: cat-step-a 0.4s ease-in-out infinite;
+}
+
+.is-walking .cat-leg-b {
+  animation: cat-step-b 0.4s ease-in-out infinite;
+}
+
+.is-walking .cat-tail {
+  animation: cat-tail 0.8s ease-in-out infinite;
+}
+
+/* one shared 5s loop: the cat leans out at 70%, the card gets nudged */
+@keyframes card-nudge {
+  0%,
+  70%,
+  90%,
+  100% {
+    transform: none;
+  }
+
+  74% {
+    transform: rotate(1.6deg) translate(2px, -1px);
+  }
+
+  78% {
+    transform: rotate(-1.1deg);
+  }
+
+  82% {
+    transform: rotate(0.7deg);
+  }
+
+  86% {
+    transform: rotate(-0.4deg);
+  }
+}
+
+@keyframes cat-peek {
+  0%,
+  62%,
+  96%,
+  100% {
+    transform: translateX(0) scaleX(var(--flip));
+  }
+
+  70%,
+  88% {
+    transform: translateX(calc(var(--dir) * 1.1rem)) scaleX(var(--flip));
+  }
+}
+
+@keyframes cat-walk {
+  from {
+    transform: translateX(0) scaleX(var(--flip));
+  }
+
+  to {
+    transform: translateX(calc(var(--dir) * 120vw)) scaleX(var(--flip));
+  }
+}
+
+@keyframes cat-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes cat-step-a {
+  0%,
+  100% {
+    transform: rotate(24deg);
+  }
+
+  50% {
+    transform: rotate(-24deg);
+  }
+}
+
+@keyframes cat-step-b {
+  0%,
+  100% {
+    transform: rotate(-24deg);
+  }
+
+  50% {
+    transform: rotate(24deg);
+  }
+}
+
+@keyframes cat-tail {
+  0%,
+  100% {
+    transform: rotate(-10deg);
+  }
+
+  50% {
+    transform: rotate(12deg);
+  }
 }
 
 @media (max-width: 48rem) {
@@ -364,7 +550,10 @@ img {
     padding-block: 3rem 0;
   }
 
-  .polaroid {
+  .polaroid-wrap {
+    /* the card sits at the left on small screens, so the cat heads right */
+    --dir: 1;
+    --flip: -1;
     align-self: flex-start;
     margin-left: 0.35rem;
   }
@@ -372,6 +561,13 @@ img {
   .polaroid img {
     width: 10rem;
     height: 12rem;
+  }
+
+  .cat {
+    left: auto;
+    right: -1.6rem;
+    width: 96px;
+    height: 63px;
   }
 }
 

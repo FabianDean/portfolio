@@ -28,6 +28,7 @@ export const hero = {
     { label: "Since", value: "January 2021" },
   ],
   portraitCaption: "not pictured: the cats",
+  portraitAction: `Portrait of ${site.name} — press to let the cat out`,
 };
 
 export const story = {

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Polaroid from "./Polaroid";
 import { hero, site } from "@/data/content";
 
 export default function Hero() {
@@ -42,16 +42,7 @@ export default function Hero() {
           </a>
         </div>
       </div>
-      <figure className="polaroid">
-        <Image
-          src="/portrait.jpg"
-          alt={`Portrait of ${site.name}`}
-          width={260}
-          height={312}
-          priority
-        />
-        <figcaption>{hero.portraitCaption}</figcaption>
-      </figure>
+      <Polaroid />
     </section>
   );
 }
