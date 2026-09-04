@@ -397,9 +397,7 @@ img {
   --cat-face: #fff3e0;
   --cat-inner: #e9a3b4;
   --cat-nose: #e98ca6;
-  --cat-blush: rgba(242, 120, 150, 0.55);
-  --cat-pupil: #1c1a17;
-  --cat-shine: #fff3e0;
+  --cat-shine: #fff8ee;
   position: absolute;
   z-index: 0;
   overflow: visible;
@@ -407,13 +405,13 @@ img {
 
 .cat--black {
   --cat-fill: #3b332d;
-  --cat-iris: #8fd18a;
+  --cat-iris: #9ad3a0;
 }
 
 .cat--tortie {
   --cat-fill: #3b332d;
-  --cat-patch: var(--accent);
-  --cat-iris: #f2b134;
+  --cat-patch: #fb923c;
+  --cat-iris: #f3c35b;
 }
 
 .cat-fur {
@@ -487,20 +485,12 @@ img {
   fill: var(--cat-nose);
 }
 
-.cat-iris {
+.cat-eye {
   fill: var(--cat-iris);
-}
-
-.cat-pupil {
-  fill: var(--cat-pupil);
 }
 
 .cat-eye-shine {
   fill: var(--cat-shine);
-}
-
-.cat-blush {
-  fill: var(--cat-blush);
 }
 
 .cat-body,
@@ -549,7 +539,7 @@ img {
 }
 
 .cat-top {
-  top: -1.5rem;
+  top: -1.1rem;
   right: 2.2rem;
   animation: cat-pop 5s ease-in-out infinite;
 }
@@ -818,7 +808,7 @@ img {
     right: auto;
     left: 1.6rem;
     width: 52px;
-    height: 56px;
+    height: 48px;
   }
 }
 

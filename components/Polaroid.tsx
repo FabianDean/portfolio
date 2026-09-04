@@ -7,44 +7,45 @@ import { hero, site } from "@/data/content";
 type Variant = "black" | "tortie";
 
 /** The face, shared by the full-body doodle and the head-only peeker. */
+const HEAD =
+  "M40 27 C 48 27, 56 28, 60 31 C 65 35, 67 43, 66 50 C 65 60, 60 68, 52 70 C 46 72, 34 72, 28 70 C 20 68, 15 60, 14 50 C 13 43, 15 35, 20 31 C 24 28, 32 27, 40 27 Z";
+
+/** The face, shared by the full-body doodle and the head-only peeker. */
 function CatHead({ variant, id }: { variant: Variant; id: string }) {
   const clip = `${id}-head`;
   return (
     <g className="cat-head">
-      <path className="cat-fur cat-ear-l" d="M20 36 C 16 28, 15 18, 20 15 C 24 13, 30 19, 34 25 Z" />
-      <path className="cat-fur cat-ear-r" d="M60 36 C 64 28, 65 18, 60 15 C 56 13, 50 19, 46 25 Z" />
-      <circle className="cat-fur" cx="40" cy="48" r="24" />
+      {/* ears (inner ears sit under the head so its outline covers their base) */}
+      <path className="cat-fur cat-ear-l" d="M21 34 C 16 27, 15 18, 19 14 C 24 12, 30 19, 33 28 Z" />
+      <path className="cat-fur cat-ear-r" d="M59 34 C 64 27, 65 18, 61 14 C 56 12, 50 19, 47 28 Z" />
+      <path className="cat-inner" d="M23 30 C 20 25, 19.5 20, 21.5 18.5 C 24 17.5, 27.5 22, 30 27 Z" />
+      <path className="cat-inner" d="M57 30 C 60 25, 60.5 20, 58.5 18.5 C 56 17.5, 52.5 22, 50 27 Z" />
+      <path className="cat-fur" d={HEAD} />
       {variant === "tortie" && (
         <>
           <clipPath id={clip}>
-            <circle cx="40" cy="48" r="24" />
+            <path d={HEAD} />
           </clipPath>
           <g className="cat-patch" clipPath={`url(#${clip})`}>
             <path d="M44 20 C 52 30, 34 40, 46 52 C 52 60, 44 66, 50 72 L 72 72 L 72 20 Z" />
-            <circle cx="22" cy="42" r="5" />
+            <circle cx="22" cy="44" r="5" />
           </g>
         </>
       )}
-      <path className="cat-inner" d="M23 33 C 20 27, 19 21, 22 19 C 25 18, 29 22, 32 27 Z" />
-      <path className="cat-inner" d="M57 33 C 60 27, 61 21, 58 19 C 55 18, 51 22, 48 27 Z" />
-      <circle className="cat-blush" cx="25" cy="57" r="3.6" />
-      <circle className="cat-blush" cx="55" cy="57" r="3.6" />
-      <path className="cat-nose" d="M37.5 56.5 h5 l-2.5 3 z" />
-      <path className="cat-face-lines" d="M40 59.5 q-2.5 4 -5.5 1.5 M40 59.5 q2.5 4 5.5 1.5" />
+      <path className="cat-nose" d="M37.5 55.5 h5 l-2.5 3 z" />
+      <path className="cat-face-lines" d="M40 58.5 q-2.5 4 -5.5 1.5 M40 58.5 q2.5 4 5.5 1.5" />
       <path
         className="cat-whiskers"
-        d="M20 53 q-6 -2 -11 -4 M20 56.5 h-11 M20 60 q-6 2 -11 4 M60 53 q6 -2 11 -4 M60 56.5 h11 M60 60 q6 2 11 4"
+        d="M17 51 q-6 -2 -11 -4 M17 54.5 h-11 M17 58 q-6 2 -11 4 M63 51 q6 -2 11 -4 M63 54.5 h11 M63 58 q6 2 11 4"
       />
-      {/* wide eyes while peeking (they blink), happy eyes while walking */}
+      {/* soft bead eyes while peeking (they blink), happy eyes while walking */}
       <g className="cat-eyes-open">
-        <circle className="cat-iris" cx="32" cy="50" r="3.6" />
-        <circle className="cat-iris" cx="48" cy="50" r="3.6" />
-        <circle className="cat-pupil" cx="32" cy="50" r="1.9" />
-        <circle className="cat-pupil" cx="48" cy="50" r="1.9" />
-        <circle className="cat-eye-shine" cx="33.3" cy="48.7" r="1.1" />
-        <circle className="cat-eye-shine" cx="49.3" cy="48.7" r="1.1" />
+        <ellipse className="cat-eye" cx="30" cy="49" rx="3.4" ry="4.1" />
+        <ellipse className="cat-eye" cx="50" cy="49" rx="3.4" ry="4.1" />
+        <circle className="cat-eye-shine" cx="31.3" cy="47.4" r="1.5" />
+        <circle className="cat-eye-shine" cx="51.3" cy="47.4" r="1.5" />
       </g>
-      <path className="cat-eyes-happy" d="M27 51 q5 -6 10 0 M43 51 q5 -6 10 0" />
+      <path className="cat-eyes-happy" d="M25 50 q5 -6 10 0 M45 50 q5 -6 10 0" />
     </g>
   );
 }
@@ -86,11 +87,11 @@ function CatDoodle({ variant, className, id }: { variant: Variant; className: st
         )}
         <Leg x={50} phase="b" />
         <Leg x={96} phase="a" />
-        <ellipse className="cat-fur" cx="84" cy="66" rx="36" ry="22" />
+        <path className="cat-fur" d="M56 44 C 70 38, 92 38, 108 44 C 120 49, 124 62, 120 74 C 116 84, 106 88, 92 88 L 66 88 C 54 88, 48 78, 49 66 C 50 56, 52 48, 56 44 Z" />
         {variant === "tortie" && (
           <>
             <clipPath id={clip}>
-              <ellipse cx="84" cy="66" rx="36" ry="22" />
+              <path d="M56 44 C 70 38, 92 38, 108 44 C 120 49, 124 62, 120 74 C 116 84, 106 88, 92 88 L 66 88 C 54 88, 48 78, 49 66 C 50 56, 52 48, 56 44 Z" />
             </clipPath>
             <g className="cat-patch" clipPath={`url(#${clip})`}>
               <circle cx="102" cy="56" r="13" />
@@ -112,9 +113,9 @@ function CatPeeker({ variant, className }: { variant: Variant; className: string
   return (
     <svg
       className={`cat cat--${variant} ${className}`}
-      viewBox="8 4 66 72"
+      viewBox="4 8 72 66"
       width="60"
-      height="65"
+      height="55"
       aria-hidden="true"
       focusable="false"
     >
