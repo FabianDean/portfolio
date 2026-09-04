@@ -8,7 +8,7 @@ type Variant = "black" | "tortie";
 
 /** The face, shared by the full-body doodle and the head-only peeker. */
 const HEAD =
-  "M40 27 C 48 27, 56 28, 60 31 C 65 35, 67 43, 66 50 C 65 60, 60 68, 52 70 C 46 72, 34 72, 28 70 C 20 68, 15 60, 14 50 C 13 43, 15 35, 20 31 C 24 28, 32 27, 40 27 Z";
+  "M40 27 C 48 27, 56 28, 60 31 C 65 35, 67 43, 66 49 L 69 52 L 65 55 L 68 59 C 66 66, 60 69, 52 70 C 46 72, 34 72, 28 70 C 20 69, 14 66, 12 59 L 15 55 L 11 52 L 14 49 C 13 43, 15 35, 20 31 C 24 28, 32 27, 40 27 Z";
 
 /** The face, shared by the full-body doodle and the head-only peeker. */
 function CatHead({ variant, id }: { variant: Variant; id: string }) {
@@ -16,10 +16,10 @@ function CatHead({ variant, id }: { variant: Variant; id: string }) {
   return (
     <g className="cat-head">
       {/* ears (inner ears sit under the head so its outline covers their base) */}
-      <path className="cat-fur cat-ear-l" d="M21 34 C 16 27, 15 18, 19 14 C 24 12, 30 19, 33 28 Z" />
-      <path className="cat-fur cat-ear-r" d="M59 34 C 64 27, 65 18, 61 14 C 56 12, 50 19, 47 28 Z" />
-      <path className="cat-inner" d="M23 30 C 20 25, 19.5 20, 21.5 18.5 C 24 17.5, 27.5 22, 30 27 Z" />
-      <path className="cat-inner" d="M57 30 C 60 25, 60.5 20, 58.5 18.5 C 56 17.5, 52.5 22, 50 27 Z" />
+      <path className="cat-fur cat-ear-l" d="M17 37 C 14 29, 14 20, 17 15 C 18 14.2, 19 14.2, 20 15 C 26 19, 32 24, 36 29 Z" />
+      <path className="cat-fur cat-ear-r" d="M63 37 C 66 29, 66 20, 63 15 C 62 14.2, 61 14.2, 60 15 C 54 19, 48 24, 44 29 Z" />
+      <path className="cat-inner" d="M20 33 C 18.5 27.5, 18.5 22, 20 18.8 C 24.5 22, 28.5 25.5, 32 29 Z" />
+      <path className="cat-inner" d="M60 33 C 61.5 27.5, 61.5 22, 60 18.8 C 55.5 22, 51.5 25.5, 48 29 Z" />
       <path className="cat-fur" d={HEAD} />
       {variant === "tortie" && (
         <>
@@ -32,20 +32,22 @@ function CatHead({ variant, id }: { variant: Variant; id: string }) {
           </g>
         </>
       )}
-      <path className="cat-nose" d="M37.5 55.5 h5 l-2.5 3 z" />
+      <path className="cat-nose" d="M37 55 h6 l-3 3.5 z" />
       <path className="cat-face-lines" d="M40 58.5 q-2.5 4 -5.5 1.5 M40 58.5 q2.5 4 5.5 1.5" />
       <path
         className="cat-whiskers"
-        d="M17 51 q-6 -2 -11 -4 M17 54.5 h-11 M17 58 q-6 2 -11 4 M63 51 q6 -2 11 -4 M63 54.5 h11 M63 58 q6 2 11 4"
+        d="M11 51 q-5 -1.5 -8 -3 M11 57 q-5 1.5 -8 3 M69 51 q5 -1.5 8 -3 M69 57 q5 1.5 8 3"
       />
       {/* soft bead eyes while peeking (they blink), happy eyes while walking */}
       <g className="cat-eyes-open">
-        <ellipse className="cat-eye" cx="30" cy="49" rx="3.4" ry="4.1" />
-        <ellipse className="cat-eye" cx="50" cy="49" rx="3.4" ry="4.1" />
-        <circle className="cat-eye-shine" cx="31.3" cy="47.4" r="1.5" />
-        <circle className="cat-eye-shine" cx="51.3" cy="47.4" r="1.5" />
+        <ellipse className="cat-eye-rim" cx="31" cy="50" rx="3.5" ry="4.1" />
+        <ellipse className="cat-eye-rim" cx="49" cy="50" rx="3.5" ry="4.1" />
+        <ellipse className="cat-eye" cx="31" cy="50.3" rx="2.7" ry="3.3" />
+        <ellipse className="cat-eye" cx="49" cy="50.3" rx="2.7" ry="3.3" />
+        <circle className="cat-eye-shine" cx="32" cy="48.9" r="1" />
+        <circle className="cat-eye-shine" cx="50" cy="48.9" r="1" />
       </g>
-      <path className="cat-eyes-happy" d="M25 50 q5 -6 10 0 M45 50 q5 -6 10 0" />
+      <path className="cat-eyes-happy" d="M26 51 q5 -6 10 0 M44 51 q5 -6 10 0" />
     </g>
   );
 }
@@ -113,9 +115,9 @@ function CatPeeker({ variant, className }: { variant: Variant; className: string
   return (
     <svg
       className={`cat cat--${variant} ${className}`}
-      viewBox="4 8 72 66"
-      width="60"
-      height="55"
+      viewBox="0 8 80 66"
+      width="64"
+      height="53"
       aria-hidden="true"
       focusable="false"
     >

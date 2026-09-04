@@ -405,13 +405,13 @@ img {
 
 .cat--black {
   --cat-fill: #3b332d;
-  --cat-iris: #9ad3a0;
+  --cat-eye-rim: #dff2df;
 }
 
 .cat--tortie {
   --cat-fill: #3b332d;
   --cat-patch: #fb923c;
-  --cat-iris: #f3c35b;
+  --cat-eye-rim: #fdeec9;
 }
 
 .cat-fur {
@@ -485,8 +485,12 @@ img {
   fill: var(--cat-nose);
 }
 
+.cat-eye-rim {
+  fill: var(--cat-eye-rim);
+}
+
 .cat-eye {
-  fill: var(--cat-iris);
+  fill: #1c1a17;
 }
 
 .cat-eye-shine {
@@ -807,8 +811,8 @@ img {
   .cat-top {
     right: auto;
     left: 1.6rem;
-    width: 52px;
-    height: 48px;
+    width: 54px;
+    height: 45px;
   }
 }
 
