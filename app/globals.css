@@ -48,6 +48,8 @@ html {
 
 body {
   margin: 0;
+  /* the walking cats leave the page sideways; clip keeps that out of the scroll area */
+  overflow-x: clip;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
@@ -320,12 +322,12 @@ img {
   font-size: 0.98rem;
 }
 
-/* ------------------------------ polaroid + cat ------------------------------ */
+/* ------------------------------ polaroid + cats ----------------------------- */
 
 .polaroid-wrap {
   position: relative;
   margin: 0.5rem 0.5rem 0 0;
-  /* the card sits on the right of wide screens, so the cat heads left */
+  /* the card sits on the right of wide screens, so the cats head left */
   --dir: -1;
   --flip: 1;
 }
@@ -368,7 +370,7 @@ img {
   padding-block: 0.45rem 0.3rem;
 }
 
-/* straighten and colour up: on hover where hover exists, and while the cat is out */
+/* straighten and colour up: on hover where hover exists, and while the cats are out */
 @media (hover: hover) {
   .polaroid:hover {
     rotate: 0deg;
@@ -388,20 +390,30 @@ img {
   filter: none;
 }
 
-/* the cat hides behind the card with its head poking past the leading edge */
+/* ---- the cats: shared palette and parts ---- */
+
 .cat {
-  --cat-fill: var(--accent);
   --cat-ink: var(--text);
-  --cat-face: #2a2420;
-  --cat-cream: #fff3e0;
-  --cat-blush: rgba(214, 70, 92, 0.42);
+  --cat-face: #fff3e0;
+  --cat-inner: #e9a3b4;
+  --cat-nose: #e98ca6;
+  --cat-blush: rgba(242, 120, 150, 0.55);
+  --cat-pupil: #1c1a17;
+  --cat-shine: #fff3e0;
   position: absolute;
   z-index: 0;
-  bottom: 0.4rem;
-  left: -2rem;
   overflow: visible;
-  transform: translateX(0) scaleX(var(--flip));
-  animation: cat-peek 5s ease-in-out infinite;
+}
+
+.cat--black {
+  --cat-fill: #3b332d;
+  --cat-iris: #8fd18a;
+}
+
+.cat--tortie {
+  --cat-fill: #3b332d;
+  --cat-patch: var(--accent);
+  --cat-iris: #f2b134;
 }
 
 .cat-fur {
@@ -409,6 +421,12 @@ img {
   stroke: var(--cat-ink);
   stroke-width: 2.6;
   stroke-linejoin: round;
+}
+
+.cat-patch,
+.cat--tortie .cat-ear-r,
+.cat--tortie .cat-sock {
+  fill: var(--cat-patch);
 }
 
 .cat-tail-outline {
@@ -425,23 +443,22 @@ img {
   stroke-linecap: round;
 }
 
-.cat-cream {
-  fill: var(--cat-cream);
-}
-
-.cat-stripes,
-.cat-whiskers {
+.cat-tail-tip {
   fill: none;
-  stroke: var(--cat-ink);
+  stroke: var(--cat-patch);
+  stroke-width: 6;
   stroke-linecap: round;
 }
 
-.cat-stripes {
-  stroke-width: 2.6;
+.cat-inner {
+  fill: var(--cat-inner);
 }
 
 .cat-whiskers {
+  fill: none;
+  stroke: var(--cat-ink);
   stroke-width: 1.8;
+  stroke-linecap: round;
 }
 
 .cat-face-lines,
@@ -466,13 +483,20 @@ img {
   display: none;
 }
 
-.cat-nose,
-.cat-eye {
-  fill: var(--cat-face);
+.cat-nose {
+  fill: var(--cat-nose);
+}
+
+.cat-iris {
+  fill: var(--cat-iris);
+}
+
+.cat-pupil {
+  fill: var(--cat-pupil);
 }
 
 .cat-eye-shine {
-  fill: var(--cat-cream);
+  fill: var(--cat-shine);
 }
 
 .cat-blush {
@@ -509,6 +533,49 @@ img {
   transform-origin: 0 100%;
 }
 
+/* ---- placement: tortie at the leading edge, black cat over the top, and hidden until it follows ---- */
+
+.cat-side {
+  bottom: 0.4rem;
+  left: -2rem;
+  transform: translateX(0) scaleX(var(--flip));
+  animation: cat-peek 5s ease-in-out infinite;
+}
+
+.cat-follow {
+  bottom: 0.4rem;
+  left: 1.6rem;
+  transform: translateX(0) scaleX(var(--flip));
+}
+
+.cat-top {
+  top: -1.3rem;
+  right: 2.2rem;
+  animation: cat-pop 5s ease-in-out infinite;
+}
+
+.cat-top .cat-head {
+  animation: cat-tilt-top 5s ease-in-out infinite;
+}
+
+.cat-top .cat-eyes-open {
+  animation-delay: 1.3s;
+}
+
+/* ---- pressed: tortie leads, black cat ducks then follows ---- */
+
+.is-walking .cat-side {
+  animation: cat-walk 4.5s linear forwards;
+}
+
+.is-walking .cat-follow {
+  animation: cat-walk-follow 4.5s linear 0.8s forwards;
+}
+
+.is-walking .cat-top {
+  animation: cat-duck 0.35s ease-in forwards;
+}
+
 .is-walking .cat-head {
   animation: none;
 }
@@ -519,10 +586,6 @@ img {
 
 .is-walking .cat-eyes-happy {
   display: block;
-}
-
-.is-walking .cat {
-  animation: cat-walk 4.5s linear forwards;
 }
 
 .is-walking .cat-body {
@@ -541,13 +604,24 @@ img {
   animation: cat-tail 0.8s ease-in-out infinite;
 }
 
-/* one shared 5s loop: the cat leans out at 70%, the card gets nudged */
+/* one shared 5s loop: the black cat pops up at 34%, the tortie leans out at 70%,
+   and the card gets nudged both times */
 @keyframes card-nudge {
   0%,
+  26%,
+  42%,
   70%,
   90%,
   100% {
     transform: none;
+  }
+
+  31% {
+    transform: translateY(-2px) rotate(0.6deg);
+  }
+
+  36% {
+    transform: rotate(-0.4deg);
   }
 
   74% {
@@ -581,24 +655,17 @@ img {
   }
 }
 
-@keyframes cat-walk {
-  from {
-    transform: translateX(0) scaleX(var(--flip));
-  }
-
-  to {
-    transform: translateX(calc(var(--dir) * 120vw)) scaleX(var(--flip));
-  }
-}
-
-@keyframes cat-bob {
+@keyframes cat-pop {
   0%,
+  26%,
+  58%,
   100% {
-    transform: translateY(0) rotate(-1.2deg);
+    transform: translateY(0);
   }
 
+  34%,
   50% {
-    transform: translateY(-2.5px) rotate(1.2deg);
+    transform: translateY(-1.5rem);
   }
 }
 
@@ -616,6 +683,20 @@ img {
   }
 }
 
+@keyframes cat-tilt-top {
+  0%,
+  26%,
+  58%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  34%,
+  50% {
+    transform: rotate(7deg);
+  }
+}
+
 @keyframes cat-blink {
   0%,
   91%,
@@ -625,6 +706,43 @@ img {
 
   95% {
     transform: scaleY(0.12);
+  }
+}
+
+@keyframes cat-walk {
+  from {
+    transform: translateX(0) scaleX(var(--flip));
+  }
+
+  to {
+    transform: translateX(calc(var(--dir) * 120vw)) scaleX(var(--flip));
+  }
+}
+
+@keyframes cat-walk-follow {
+  from {
+    transform: translateX(0) scaleX(var(--flip));
+  }
+
+  to {
+    transform: translateX(calc(var(--dir) * 120vw)) scaleX(var(--flip));
+  }
+}
+
+@keyframes cat-duck {
+  to {
+    transform: translateY(2.5rem);
+  }
+}
+
+@keyframes cat-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.2deg);
+  }
+
+  50% {
+    transform: translateY(-2.5px) rotate(1.2deg);
   }
 }
 
@@ -669,7 +787,7 @@ img {
   }
 
   .polaroid-wrap {
-    /* the card sits at the left on small screens, so the cat heads right */
+    /* the card sits at the left on small screens, so the cats head right */
     --dir: 1;
     --flip: -1;
     align-self: flex-start;
@@ -681,11 +799,26 @@ img {
     height: 12rem;
   }
 
-  .cat {
+  .cat-side,
+  .cat-follow {
     left: auto;
-    right: -2rem;
     width: 104px;
     height: 74px;
+  }
+
+  .cat-side {
+    right: -2rem;
+  }
+
+  .cat-follow {
+    right: 1.6rem;
+  }
+
+  .cat-top {
+    right: auto;
+    left: 1.6rem;
+    width: 52px;
+    height: 56px;
   }
 }
 

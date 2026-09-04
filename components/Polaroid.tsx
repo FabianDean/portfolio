@@ -4,95 +4,156 @@ import { useState, type AnimationEvent } from "react";
 import Image from "next/image";
 import { hero, site } from "@/data/content";
 
+type Variant = "black" | "tortie";
+
+/** The face, shared by the full-body doodle and the head-only peeker. */
+function CatHead({ variant, id }: { variant: Variant; id: string }) {
+  const clip = `${id}-head`;
+  return (
+    <g className="cat-head">
+      <path className="cat-fur cat-ear-l" d="M18 38 L15 11 L37 24 Z" />
+      <path className="cat-fur cat-ear-r" d="M43 24 L65 11 L62 38 Z" />
+      <circle className="cat-fur" cx="40" cy="48" r="24" />
+      {variant === "tortie" && (
+        <>
+          <clipPath id={clip}>
+            <circle cx="40" cy="48" r="24" />
+          </clipPath>
+          <g className="cat-patch" clipPath={`url(#${clip})`}>
+            <path d="M44 20 C 52 30, 34 40, 46 52 C 52 60, 44 66, 50 72 L 72 72 L 72 20 Z" />
+            <circle cx="22" cy="42" r="5" />
+          </g>
+        </>
+      )}
+      <path className="cat-inner" d="M22 33 L21 19 L32 27 Z" />
+      <path className="cat-inner" d="M48 27 L59 19 L58 33 Z" />
+      <circle className="cat-blush" cx="25" cy="57" r="3.6" />
+      <circle className="cat-blush" cx="55" cy="57" r="3.6" />
+      <path className="cat-nose" d="M37.5 56.5 h5 l-2.5 3 z" />
+      <path className="cat-face-lines" d="M40 59.5 q-2.5 4 -5.5 1.5 M40 59.5 q2.5 4 5.5 1.5" />
+      <path
+        className="cat-whiskers"
+        d="M20 53 q-6 -2 -11 -4 M20 56.5 h-11 M20 60 q-6 2 -11 4 M60 53 q6 -2 11 -4 M60 56.5 h11 M60 60 q6 2 11 4"
+      />
+      {/* wide eyes while peeking (they blink), happy eyes while walking */}
+      <g className="cat-eyes-open">
+        <circle className="cat-iris" cx="32" cy="50" r="3.6" />
+        <circle className="cat-iris" cx="48" cy="50" r="3.6" />
+        <circle className="cat-pupil" cx="32" cy="50" r="1.9" />
+        <circle className="cat-pupil" cx="48" cy="50" r="1.9" />
+        <circle className="cat-eye-shine" cx="33.3" cy="48.7" r="1.1" />
+        <circle className="cat-eye-shine" cx="49.3" cy="48.7" r="1.1" />
+      </g>
+      <path className="cat-eyes-happy" d="M27 51 q5 -6 10 0 M43 51 q5 -6 10 0" />
+    </g>
+  );
+}
+
+function Leg({ x, phase, sock }: { x: number; phase: "a" | "b"; sock?: boolean }) {
+  return (
+    <g className={`cat-leg cat-leg-${phase}`}>
+      <rect className={`cat-fur${sock ? " cat-sock" : ""}`} x={x} y="72" width="11" height="20" rx="5.5" />
+      <path className="cat-toes" d={`M${x + 3.5} 87 v4 M${x + 7.5} 87 v4`} />
+    </g>
+  );
+}
+
+const TAIL = "M116 62 C 136 60, 140 38, 126 30";
+
+/** Full-body walking doodle. */
+function CatDoodle({ variant, className, id }: { variant: Variant; className: string; id: string }) {
+  const clip = `${id}-body`;
+  return (
+    <svg
+      className={`cat cat--${variant} ${className}`}
+      viewBox="0 0 140 100"
+      width="120"
+      height="86"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <g className="cat-body">
+        <path className="cat-tail cat-tail-outline" d={TAIL} />
+        <path className="cat-tail cat-tail-fill" d={TAIL} />
+        {variant === "tortie" && (
+          <path
+            className="cat-tail cat-tail-tip"
+            d={TAIL}
+            pathLength="1"
+            strokeDasharray="0.3 1"
+            strokeDashoffset="-0.7"
+          />
+        )}
+        <Leg x={50} phase="b" />
+        <Leg x={96} phase="a" />
+        <ellipse className="cat-fur" cx="84" cy="66" rx="36" ry="22" />
+        {variant === "tortie" && (
+          <>
+            <clipPath id={clip}>
+              <ellipse cx="84" cy="66" rx="36" ry="22" />
+            </clipPath>
+            <g className="cat-patch" clipPath={`url(#${clip})`}>
+              <circle cx="102" cy="56" r="13" />
+              <ellipse cx="70" cy="74" rx="11" ry="8" />
+              <circle cx="118" cy="72" r="8" />
+            </g>
+          </>
+        )}
+        <Leg x={60} phase="a" sock={variant === "tortie"} />
+        <Leg x={106} phase="b" />
+        <CatHead variant={variant} id={id} />
+      </g>
+    </svg>
+  );
+}
+
+/** Head-only doodle that peeks over the top edge of the card. */
+function CatPeeker({ variant, className }: { variant: Variant; className: string }) {
+  return (
+    <svg
+      className={`cat cat--${variant} ${className}`}
+      viewBox="8 4 66 72"
+      width="60"
+      height="65"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <CatHead variant={variant} id={`${variant}-peeker`} />
+    </svg>
+  );
+}
+
 /**
- * The tilted, grayscale portrait with a cat doodle hiding behind it.
- * On a loop the cat peeks out and nudges the card; pressing the card
- * straightens it (in color) and lets the cat walk out across the page.
+ * The tilted, grayscale portrait with two cat doodles hiding behind it.
+ * On a loop the tortie leans out past the card's edge and the black cat
+ * pops up over the top; pressing the card straightens it (in color) and
+ * lets both cats walk out across the page, tortie first.
  */
 export default function Polaroid() {
   const [walking, setWalking] = useState(false);
 
-  const letTheCatOut = () => {
+  const letTheCatsOut = () => {
     if (!walking) setWalking(true);
   };
 
-  const onCatAnimationEnd = (event: AnimationEvent<SVGSVGElement>) => {
-    if (event.animationName === "cat-walk") setWalking(false);
+  // the black cat leaves last, so its walk ending resets the scene
+  const onAnimationEnd = (event: AnimationEvent<HTMLDivElement>) => {
+    if (event.animationName === "cat-walk-follow") setWalking(false);
   };
 
   return (
-    <div className={`polaroid-wrap${walking ? " is-walking" : ""}`}>
-      <svg
-        className="cat"
-        viewBox="0 0 140 100"
-        width="120"
-        height="86"
-        aria-hidden="true"
-        focusable="false"
-        onAnimationEnd={onCatAnimationEnd}
-      >
-        <g className="cat-body">
-          {/* tail: ink outline under a fill stroke */}
-          <path className="cat-tail cat-tail-outline" d="M116 62 C 136 60, 140 38, 126 30" />
-          <path className="cat-tail cat-tail-fill" d="M116 62 C 136 60, 140 38, 126 30" />
-
-          {/* far legs (behind the body) */}
-          <g className="cat-leg cat-leg-b">
-            <rect className="cat-fur" x="50" y="72" width="11" height="20" rx="5.5" />
-            <path className="cat-toes" d="M53.5 87 v4 M57.5 87 v4" />
-          </g>
-          <g className="cat-leg cat-leg-a">
-            <rect className="cat-fur" x="96" y="72" width="11" height="20" rx="5.5" />
-            <path className="cat-toes" d="M99.5 87 v4 M103.5 87 v4" />
-          </g>
-
-          {/* body, cream belly, tabby stripes */}
-          <ellipse className="cat-fur" cx="84" cy="66" rx="36" ry="22" />
-          <ellipse className="cat-cream" cx="78" cy="76" rx="18" ry="9" />
-          <path className="cat-stripes" d="M86 46 q3 6 0 12 M98 47 q3 6 0 12 M109 51 q3 6 0 11" />
-
-          {/* near legs (in front of the body) */}
-          <g className="cat-leg cat-leg-a">
-            <rect className="cat-fur" x="60" y="72" width="11" height="20" rx="5.5" />
-            <path className="cat-toes" d="M63.5 87 v4 M67.5 87 v4" />
-          </g>
-          <g className="cat-leg cat-leg-b">
-            <rect className="cat-fur" x="106" y="72" width="11" height="20" rx="5.5" />
-            <path className="cat-toes" d="M109.5 87 v4 M113.5 87 v4" />
-          </g>
-
-          {/* head */}
-          <g className="cat-head">
-            <path className="cat-fur" d="M18 38 L15 11 L37 24 Z" />
-            <path className="cat-fur" d="M43 24 L65 11 L62 38 Z" />
-            <circle className="cat-fur" cx="40" cy="48" r="24" />
-            <path className="cat-cream" d="M22 33 L21 19 L32 27 Z" />
-            <path className="cat-cream" d="M48 27 L59 19 L58 33 Z" />
-            <circle className="cat-blush" cx="25" cy="57" r="3.6" />
-            <circle className="cat-blush" cx="55" cy="57" r="3.6" />
-            <ellipse className="cat-cream" cx="40" cy="59" rx="7.5" ry="5" />
-            <path className="cat-nose" d="M37.5 56.5 h5 l-2.5 3 z" />
-            <path className="cat-face-lines" d="M40 59.5 q-2.5 4 -5.5 1.5 M40 59.5 q2.5 4 5.5 1.5" />
-            <path
-              className="cat-whiskers"
-              d="M20 53 q-6 -2 -11 -4 M20 56.5 h-11 M20 60 q-6 2 -11 4 M60 53 q6 -2 11 -4 M60 56.5 h11 M60 60 q6 2 11 4"
-            />
-            {/* wide eyes while peeking (they blink), happy eyes while walking */}
-            <g className="cat-eyes-open">
-              <circle className="cat-eye" cx="32" cy="50" r="3.3" />
-              <circle className="cat-eye" cx="48" cy="50" r="3.3" />
-              <circle className="cat-eye-shine" cx="33.2" cy="48.8" r="1.2" />
-              <circle className="cat-eye-shine" cx="49.2" cy="48.8" r="1.2" />
-            </g>
-            <path className="cat-eyes-happy" d="M27 51 q5 -6 10 0 M43 51 q5 -6 10 0" />
-          </g>
-        </g>
-      </svg>
+    <div
+      className={`polaroid-wrap${walking ? " is-walking" : ""}`}
+      onAnimationEnd={onAnimationEnd}
+    >
+      <CatDoodle variant="black" className="cat-follow" id="cat-black" />
+      <CatPeeker variant="black" className="cat-top" />
+      <CatDoodle variant="tortie" className="cat-side" id="cat-tortie" />
 
       <button
         type="button"
         className="polaroid"
-        onClick={letTheCatOut}
+        onClick={letTheCatsOut}
         aria-label={hero.portraitAction}
       >
         <Image
