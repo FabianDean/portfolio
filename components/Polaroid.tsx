@@ -68,7 +68,6 @@ export default function Polaroid() {
             <circle className="cat-fur" cx="40" cy="48" r="24" />
             <path className="cat-cream" d="M22 33 L21 19 L32 27 Z" />
             <path className="cat-cream" d="M48 27 L59 19 L58 33 Z" />
-            <path className="cat-face-lines" d="M31 38 l3 -7 l3 7 l3 -7 l3 7" />
             <circle className="cat-blush" cx="25" cy="57" r="3.6" />
             <circle className="cat-blush" cx="55" cy="57" r="3.6" />
             <ellipse className="cat-cream" cx="40" cy="59" rx="7.5" ry="5" />
